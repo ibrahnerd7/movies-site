@@ -1,12 +1,15 @@
 import React from 'react';
-import Header from './Header';
-import TagLine from './TagLine';
+import {Header, Popular, PopularCard, TagLine} from './components';
 
 const Home=()=>{
     return(
         <React.Fragment>
             <Header/>
             <TagLine />
+            <br />
+            <Popular />
+            <br />
+            <PopularCard />
         </React.Fragment>
     )
 }
