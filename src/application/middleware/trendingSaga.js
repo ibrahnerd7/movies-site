@@ -1,9 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { getAllTrending } from '../../infrastructure/services/api/trending';
-import { loadTrendingFailure, loadTrendingSuccess, LOAD_TRENDING } from '../actions/trending';
+import { loadTrending, loadTrendingFailure, loadTrendingSuccess, LOAD_TRENDING } from '../actions/trending';
 
 export function* handleTrendingLoad() {
     try {
+        yield put(loadTrending())
         const trending = yield call(getAllTrending());
         yield put(loadTrendingSuccess(trending));
     }
