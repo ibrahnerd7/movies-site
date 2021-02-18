@@ -1,6 +1,6 @@
 import Header from './Header';
 import Popular from './Popular';
 import TagLine from './TagLine';
-import PopularCard from './PopularCard';
+import Trending from './Trending';
 
-export  {Header, Popular, TagLine, PopularCard};
+export  {Header, Popular, TagLine, Trending};
