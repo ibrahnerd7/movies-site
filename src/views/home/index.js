@@ -1,16 +1,17 @@
 import React from 'react';
-import {Header, Popular, PopularCard, TagLine} from './components';
+import {Header, PopularCard, TagLine} from './components';
+import {Container} from 'reactstrap';
+import { Switch } from 'react-router-dom';
 
 const Home=()=>{
     return(
-        <React.Fragment>
+        <Container style={{marginLeft:0,marginRight:0,padding:0}}>
             <Header/>
             <TagLine />
             <br />
-            <Popular />
-            <br />
+            <Switch></Switch>
             <PopularCard />
-        </React.Fragment>
+        </Container>
     )
 }
 
