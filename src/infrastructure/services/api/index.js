@@ -1,3 +1,5 @@
 import trending from './trending';
+import movies from './movies';
 
-export {trending}
+
+export {trending, movies}

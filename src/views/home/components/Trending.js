@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardImg, CardImgOverlay, Col, Row, Button } from 'reactstrap';
 import { IoAddCircle } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
-import { getAllTrending, getTrendingByTimeWindow } from '../../../infrastructure/services/api/trending';
+import {getTrendingByTimeWindow } from '../../../infrastructure/services/api/trending';
 import './style.css'
 
 const TrendingCard = ({ item }) => {
-    return <Col md="2" xs="6">
+    return <Col md="2" xs="6" >
         <Card inverse>
             <CardImg src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt="Card image cap" />
             <CardImgOverlay>
@@ -45,7 +44,7 @@ const Trending = () => {
             </div>
             <Row className="flex-nowrap flex-row trending" >
                 {
-                    trending.map((trendingItem) => <TrendingCard item={trendingItem} />)
+                    trending.map((trendingItem) => <TrendingCard item={trendingItem} key={trendingItem.id}/>)
                 }
             </Row>
         </div>

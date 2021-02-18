@@ -5,7 +5,6 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavItem,
     NavLink,
     UncontrolledDropdown,
     DropdownToggle,
@@ -26,26 +25,50 @@ const Header = (props) => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        <NavItem>
-                            <NavLink href="/components/">Movies</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">Tv Shows</NavLink>
-                        </NavItem>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Movies
+              </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem  href="/movies/popular">
+                                Popular
+                                    
+                </DropdownItem>
+                                <DropdownItem href="/movies/now-playing">
+                                    Now Playing
+                </DropdownItem>
+                                <DropdownItem href="/movies/upcoming">
+                                    Upcoming
+                </DropdownItem>
+                                <DropdownItem href="/movies/top-rated">
+                                    Top rated
+                </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>TV Shows </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem>
+                                    Popular
+                </DropdownItem>
+                                <DropdownItem>
+                                    Airing Today
+                </DropdownItem>
+                                <DropdownItem>
+                                    On TV
+                </DropdownItem>
+                                <DropdownItem>
+                                    Top rated
+                </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 People
               </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem>
-                                    Option 1
-                </DropdownItem>
-                                <DropdownItem>
-                                    Option 2
-                </DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>
-                                    Reset
+                                    Popular people
                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
