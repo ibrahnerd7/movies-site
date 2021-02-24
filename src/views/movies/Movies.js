@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Row, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Col, Container, CardGroup } from 'reactstrap';
+import { Row, Card, CardImg, CardBody, CardTitle, CardSubtitle, Col, Container, CardGroup } from 'reactstrap';
 import { getMoviesByTerm } from '../../infrastructure/services/api/movies';
 
-const Movies = (props) => {
+const Movie=({movieItem})=>{
+    return(
+        <Col md="2" xs="6">
+        <Card className="">
+            <CardImg top src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movieItem.poster_path}`} alt="Card image cap" />
+            <CardBody>
+                <CardTitle tag="h5">{movieItem.title}</CardTitle>
+                <CardSubtitle tag="h6" className="mb-2 text-muted">{new Date(movieItem.release_date).toLocaleDateString()}</CardSubtitle>
+            </CardBody>
+        </Card>
+        </Col>
+    )
+}
+
+const Movies = () => {
     const { term } = useParams();
     const [movies, setMovies] = useState([]);
 
     const fetchMoviesByTerm = async (movieTerm) => {
-        movieTerm=movieTerm.replace('-',"_")
-        console.log(movieTerm)
+      const normalizedMovieTerm =movieTerm.replace('-',"_")
         try {
-            const fetchedMovies = await getMoviesByTerm(movieTerm);
+            const fetchedMovies = await getMoviesByTerm(normalizedMovieTerm);
             setMovies(fetchedMovies);
         }
         catch (error) {
@@ -30,15 +43,7 @@ const Movies = (props) => {
             <CardGroup>
                 {
                     movies.map((movie) => (
-                        <Col md="2" xs="6">
-                        <Card className="">
-                            <CardImg top src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`} alt="Card image cap" />
-                            <CardBody>
-                                <CardTitle tag="h5">{movie.title}</CardTitle>
-                                <CardSubtitle tag="h6" className="mb-2 text-muted">{new Date(movie.release_date).toLocaleDateString()}</CardSubtitle>
-                            </CardBody>
-                        </Card>
-                        </Col>
+                     <Movie movieItem={movie} />
                     ))
                 }
                 </CardGroup>

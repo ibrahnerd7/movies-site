@@ -13,6 +13,31 @@ import {
     NavbarText
 } from 'reactstrap';
 
+const MoviesHeaderItems=()=>{
+    return(
+        <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav caret>
+            Movies
+</DropdownToggle>
+        <DropdownMenu right>
+            <DropdownItem  href="/movies/popular">
+            Popular
+                
+</DropdownItem>
+            <DropdownItem href="/movies/now-playing">
+                Now Playing
+</DropdownItem>
+            <DropdownItem href="/movies/upcoming">
+                Upcoming
+</DropdownItem>
+            <DropdownItem href="/movies/top-rated">
+                Top rated
+</DropdownItem>
+        </DropdownMenu>
+    </UncontrolledDropdown>
+    )
+}
+
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -25,26 +50,7 @@ const Header = (props) => {
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                Movies
-              </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem  href="/movies/popular">
-                                Popular
-                                    
-                </DropdownItem>
-                                <DropdownItem href="/movies/now-playing">
-                                    Now Playing
-                </DropdownItem>
-                                <DropdownItem href="/movies/upcoming">
-                                    Upcoming
-                </DropdownItem>
-                                <DropdownItem href="/movies/top-rated">
-                                    Top rated
-                </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
+                     <MoviesHeaderItems />
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>TV Shows </DropdownToggle>
                             <DropdownMenu right>
