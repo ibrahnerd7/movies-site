@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { Card, CardImg, CardImgOverlay, Col, Row, Button } from 'reactstrap';
 import { IoAddCircle } from 'react-icons/io5'
 import {getTrendingByTimeWindow } from '../../../infrastructure/services/api/trending';
@@ -17,39 +17,42 @@ const TrendingCard = ({ item }) => {
     </Col>;
 }
 
-const Trending = () => {
-    const [trending, setTrending] = useState([]);
-    const [timeWindow,setTimeWindow]=useState('day')
+const Trending =() =>{
+const [timeWindow,setTimeWindow]=useState('day');
+const [trending,setTrending]=useState([]);
 
-    useEffect(() => {
-        fetchTrendingByTime(timeWindow)
-    }, [timeWindow])
+const fetchTrending=async(time)=>{
+try{
+const results=await getTrendingByTimeWindow(time);
+setTrending(results)
+}
+catch(e){
 
-    const fetchTrendingByTime = async (time) => {
-        try {
-            const trendings = await getTrendingByTimeWindow(time);
-            setTrending(trendings);
-        }
-        catch (error) {
+}
+}
 
-        }
-    }
+useEffect(()=>{
+fetchTrending(timeWindow)
+},[timeWindow])
+    
 
     return (
-        <div >
+        <div className="flex-1" >
             <div className="clearfix mt-5 mb-2">
                 <h4 className="float-left">Trending</h4>
                 <Button color="primary" size="sm" onClick={()=>setTimeWindow('day')}>Today</Button>{' '}
                 <Button color="secondary" size="sm" onClick={()=>setTimeWindow('week')}>This week</Button>
             </div>
-            <Row className="flex-nowrap flex-row trending" >
+            <Row className="flex-nowrap flex-row trending flex-1" >
                 {
                     trending.map((trendingItem) => <TrendingCard item={trendingItem} key={trendingItem.id}/>)
                 }
             </Row>
         </div>
     )
+ 
 }
+
 
 export default Trending;
 

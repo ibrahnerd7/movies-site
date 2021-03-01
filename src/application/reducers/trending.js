@@ -1,22 +1,37 @@
-import { LOAD_TRENDING, LOAD_TRENDING_FAILURE, LOAD_TRENDING_SUCCESS } from "../actions/trending";
+import { TRENDING } from "../constants";
 
-const initialState = {
-    allTrending: [],
-    error: null,
-    isLoading:true,
-};
-
-const reducer = (state = initialState, action) => {
+const trendingReducer = (state = {}, action) => {
     switch (action.type) {
-        case LOAD_TRENDING:
-            return {...initialState,isLoading:true}
-        case LOAD_TRENDING_SUCCESS:
-            return { allTodos: action.payload, error: null,isLoading:false };
-        case LOAD_TRENDING_FAILURE:
-            return { error: action.payload, isLoading:false};
+        case TRENDING.LOAD:
+            return {
+                ...state,
+                [action.id]: {
+                    isLoading: true,
+                    trending: null,
+                    error: false,
+                },
+            };
+        case TRENDING.LOAD_SUCCESS:
+            return {
+                ...state,
+                [action.id]: {
+                    isLoading: false,
+                    trending: action.downloads,
+                    error: false,
+                },
+            };
+        case TRENDING.LOAD_FAIL:
+            return {
+                ...state,
+                [action.id]: {
+                    isLoading: false,
+                    trending: null,
+                    error: true,
+                },
+            };
         default:
             return state;
     }
-}
+};
 
-export default reducer;
+export default trendingReducer;

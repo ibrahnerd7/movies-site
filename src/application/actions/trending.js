@@ -1,18 +1,16 @@
-export const LOAD_TRENDING='[trending] load';
-export const LOAD_TRENDING_SUCCESS='[todos] load success';
-export const LOAD_TRENDING_FAILURE='[trending] load failure';
+import { TRENDING } from "../constants";
 
-
-export const loadTrending=()=>({
-    type:LOAD_TRENDING,
+export const loadTrending=(timeWindow)=>({
+    type:TRENDING.LOAD,
+    timeWindow
 });
 
-export const loadTrendingSuccess=trending=>({
-    type:LOAD_TRENDING_SUCCESS,
-    payload:trending,
+export const setTrendings=trending=>({
+    type:TRENDING.LOAD_SUCCESS,
+    trending,
 });
 
-export const loadTrendingFailure=(error)=>({
-    type:LOAD_TRENDING_FAILURE,
-    payload:error,
+export const setTrendingLoadError=(error)=>({
+    type:TRENDING.LOAD_FAIL,
+    error
 });

@@ -6,11 +6,11 @@ import { getMoviesByTerm } from '../../infrastructure/services/api/movies';
 const Movie=({movieItem})=>{
     return(
         <Col md="2" xs="6">
-        <Card className="">
+        <Card className="mt-2">
             <CardImg top src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movieItem.poster_path}`} alt="Card image cap" />
             <CardBody>
-                <CardTitle tag="h5">{movieItem.title}</CardTitle>
-                <CardSubtitle tag="h6" className="mb-2 text-muted">{new Date(movieItem.release_date).toLocaleDateString()}</CardSubtitle>
+                <CardTitle tag="h6" className="text-nowrap text-truncate" style={{width:"100%"}}>{movieItem.title}</CardTitle>
+                <CardSubtitle tag="p" className="mb-2 text-muted">{new Date(movieItem.release_date).toLocaleDateString()}</CardSubtitle>
             </CardBody>
         </Card>
         </Col>
