@@ -1,33 +1,30 @@
 import { TRENDING } from "../constants";
 
-const trendingReducer = (state = {}, action) => {
+const initialState = {
+    trendings: [],
+    loading: false,
+    error: false
+}
+
+const trendingReducer = (state = initialState, action) => {
     switch (action.type) {
         case TRENDING.LOAD:
             return {
-                ...state,
-                [action.id]: {
-                    isLoading: true,
-                    trending: null,
-                    error: false,
-                },
+                trendings: [],
+                loading: true,
+                error: false,
             };
         case TRENDING.LOAD_SUCCESS:
             return {
-                ...state,
-                [action.id]: {
-                    isLoading: false,
-                    trending: action.downloads,
-                    error: false,
-                },
+                trendings: action.trendings,
+                loading: false,
+                error: false
             };
         case TRENDING.LOAD_FAIL:
             return {
-                ...state,
-                [action.id]: {
-                    isLoading: false,
-                    trending: null,
-                    error: true,
-                },
+                trendings: [],
+                loading: false,
+                error: true
             };
         default:
             return state;

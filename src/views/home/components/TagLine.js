@@ -6,15 +6,18 @@ const TagLine=()=>{
         <div style={{backgroundImage: `url(${process.env.PUBLIC_URL + 'img/background_header.jpg'})`, 
          backgroundRepeat: 'no-repeat',
          paddingTop:116,
-         paddingBottom:76
+         paddingBottom:76,
+         paddingLeft:24,
+         paddingRight:24
         }}>
         <h1 className="text-white">Welcome .</h1>
         <h5 className="text-white">Millions of movies, TV shows and people to discover. Explore now.</h5>
         <br />
+        <br />
         <InputGroup >
         <Input />
         <InputGroupAddon addonType="append">
-          <Button>Search</Button>
+          <Button color="success" >Search</Button>
         </InputGroupAddon>
       </InputGroup>
     </div>

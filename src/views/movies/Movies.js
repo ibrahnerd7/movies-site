@@ -36,9 +36,11 @@ const Movies = () => {
         fetchMoviesByTerm(term)
     }, [term])
 
+    const capitalizeTitle=(term)=>(term.charAt(0).toUpperCase()+term.slice(1)).replace("-"," ")
+
     return (
         <Container>
-            <h1 className="mt-4 mb-4">{`${term} Movies`}</h1>
+            <h1 className="mt-4 mb-4">{`${capitalizeTitle(term)} Movies`}</h1>
             <Row className="flex-row">
             <CardGroup>
                 {

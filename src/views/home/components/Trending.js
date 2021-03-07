@@ -35,7 +35,6 @@ useEffect(()=>{
 fetchTrending(timeWindow)
 },[timeWindow])
     
-
     return (
         <div className="flex-1" >
             <div className="clearfix mt-5 mb-2">

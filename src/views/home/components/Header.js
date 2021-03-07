@@ -79,7 +79,7 @@ const Header = (props) => {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
-                    <NavLink href="https://github.com/reactstrap/reactstrap">Search</NavLink>
+                    <NavLink href="#">Search</NavLink>
                     <NavbarText>Login</NavbarText>
                 </Collapse>
             </Navbar>

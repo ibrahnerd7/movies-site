@@ -19,7 +19,7 @@ function App() {
             <Route path="/movies/:term">
               <Movies />
             </Route>
-            <Route path="/">
+            <Route path="/search?">
               <Home />
             </Route>
           </Switch>
