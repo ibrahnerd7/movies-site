@@ -1,8 +1,7 @@
 import { TRENDING } from "../constants";
 
-export const requestTrendings=(timeWindow)=>({
+export const requestTrendings=()=>({
     type:TRENDING.LOAD,
-    timeWindow
 });
 
 export const requestTrendingsSuccess=trendings=>({

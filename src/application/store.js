@@ -11,8 +11,8 @@ import rootSaga from './middleware';
         rootReducer,
         compose(
             applyMiddleware(sagaMiddleware),
-            // window.__REDUX_DEVTOOLS_EXTENSION__ &&
-            // windoew.__REDUX_DEVTOOLS_EXTENSION__(),
+            window.__REDUX_DEVTOOLS_EXTENSION__ &&
+            window.__REDUX_DEVTOOLS_EXTENSION__(),
         ),
     );
         sagaMiddleware.run(rootSaga);
