@@ -1,16 +1,15 @@
 import { TRENDING } from "../constants";
 
-export const loadTrending=(timeWindow)=>({
+export const requestTrendings=(timeWindow)=>({
     type:TRENDING.LOAD,
     timeWindow
 });
 
-export const setTrendings=trending=>({
+export const requestTrendingsSuccess=trendings=>({
     type:TRENDING.LOAD_SUCCESS,
-    trending,
+    trendings,
 });
 
-export const setTrendingLoadError=(error)=>({
+export const requestTrendingsError=()=>({
     type:TRENDING.LOAD_FAIL,
-    error
 });
