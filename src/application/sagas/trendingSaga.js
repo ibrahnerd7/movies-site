@@ -1,9 +1,9 @@
-import { call, fork, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { getTrendingByTimeWindow } from '../../infrastructure/services/api/trending';
 import {requestTrendingsError, requestTrendingsSuccess } from '../actions/trending';
 import { TRENDING } from '../constants';
 
-function* handleTrendingLoad() {
+export function* handleTrendingLoad() {
     try {
         const trending = yield call(getTrendingByTimeWindow,"day");
         yield put(requestTrendingsSuccess(trending));
