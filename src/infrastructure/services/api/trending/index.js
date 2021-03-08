@@ -13,7 +13,6 @@ const getTrendingByTimeWindow = async () => {
     catch(error){
         console.log(error.message)
     }
- 
 }
 
 export {getAllTrending,getTrendingByTimeWindow}
