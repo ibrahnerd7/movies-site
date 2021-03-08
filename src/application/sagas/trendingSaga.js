@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { getTrendingByTimeWindow } from '../../infrastructure/services/api/trending';
-import {requestTrendingsError, requestTrendingsSuccess } from '../actions/trending';
+import {requestTrendingsError, requestTrendingsSuccess } from '../actions-creators/trending';
 import { TRENDING } from '../constants';
 
 export function* handleTrendingLoad() {
