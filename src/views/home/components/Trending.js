@@ -3,7 +3,7 @@ import { Card, CardImg, CardImgOverlay, Col, Row, Button } from 'reactstrap';
 import { IoAddCircle } from 'react-icons/io5'
 import './style.css'
 import { connect } from 'react-redux';
-import { requestTrendings } from '../../../application/actions/trending';
+import { requestTrendings } from '../../../application/actions-creators/trending';
 
 const TrendingCard = ({ item }) => {
     return <Col md="2" xs="6" >
