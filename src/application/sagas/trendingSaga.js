@@ -3,9 +3,9 @@ import { getTrendingByTimeWindow } from '../../infrastructure/services/api/trend
 import {requestTrendingsError, requestTrendingsSuccess } from '../actions-creators/trending';
 import { TRENDING } from '../constants';
 
-export function* handleTrendingLoad() {
+export function* handleTrendingLoad(action) {
     try {
-        const trending = yield call(getTrendingByTimeWindow,"day");
+        const trending = yield call(getTrendingByTimeWindow,action.timeWindow);
         yield put(requestTrendingsSuccess(trending));
     }
     catch (error) {
