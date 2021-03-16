@@ -1,7 +1,8 @@
 import { POPULAR } from "../constants";
 
-export const requestPopular=()=>({
+export const requestPopular=(popularType)=>({
     type:POPULAR.LOAD,
+    popularType,
 });
 
 export const requestPopularSuccess=popular=>({
