@@ -5,7 +5,7 @@ const getAllTrending = async () => {
     return response.data.results;
 }
 
-const getTrendingByTimeWindow = async (timeWindow) => {
+const getTrendingByTimeWindow = async (timeWindow="day") => {
     try{
         const response = await axios.get(`https://api.themoviedb.org/3/trending/all/${timeWindow}?api_key=d9a1f141ddec95a6af5324e99ba4c5d9`);
         return response.data.results;
