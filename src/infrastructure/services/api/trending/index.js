@@ -1,13 +1,14 @@
 import axios from 'axios';
+import {buildUrl} from '../constants'
 
 const getAllTrending = async () => {
-    const response = await axios.get('https://api.themoviedb.org/3/trending/all/week?api_key=d9a1f141ddec95a6af5324e99ba4c5d9');
+    const response = await axios.get(buildUrl("trending/all/week"))
     return response.data.results;
 }
 
 const getTrendingByTimeWindow = async (timeWindow="day") => {
     try{
-        const response = await axios.get(`https://api.themoviedb.org/3/trending/all/${timeWindow}?api_key=d9a1f141ddec95a6af5324e99ba4c5d9`);
+        const response = await axios.get(buildUrl(`trending/all/${timeWindow}`));
         return response.data.results;
     }
     catch(error){
