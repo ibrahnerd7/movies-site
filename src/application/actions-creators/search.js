@@ -1,15 +1,15 @@
 import { SEARCH } from "../constants";
 
-export const requestTrendings=(searchTerm)=>({
+export const requestSearch=(searchTerm)=>({
     type:SEARCH.LOAD,
     searchTerm
 });
 
-export const requestTrendingsSuccess=results=>({
+export const requestSearchSuccess=results=>({
     type:SEARCH.LOAD_SUCCESS,
     results,
 });
 
-export const requestTrendingsError=()=>({
+export const requestSearchError=()=>({
     type:SEARCH.LOAD_FAIL,
 });
