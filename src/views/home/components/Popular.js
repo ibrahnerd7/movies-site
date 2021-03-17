@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Row, ButtonGroup, Card, CardImg,Col} from 'reactstrap';
+import { requestPopular } from '../../../application/actions-creators/popular';
 import './style.css'
 
 
@@ -15,15 +16,23 @@ const PopularCard = ({ item }) => {
 }
 
 const Popular = () => {
-  const {popular,loading}=useSelector(state=>state.populars)
+  const [activePopularType, setActivePopularType]=useState("tv");
+  const {popular,loading}=useSelector(state=>state.populars);
+  const dispatch=useDispatch()
+
+  useEffect(()=>{
+  dispatch(requestPopular(activePopularType));
+  },[activePopularType])
+
     return (
         <div>
             <Row>
                 <h3>What's popular</h3>
                 <ButtonGroup size="sm">
-                    <Button color="primary" style={{ marginRight: 2 }} size="sm">Streaming</Button>
-                    <Button color="secondary" size="sm">On Tv</Button>
+                    <Button color="primary" style={{ marginRight: 2 }} size="sm" onClick={()=>setActivePopularType("movie")}>Streaming</Button>
+                    <Button color="secondary" size="sm" onClick={()=>setActivePopularType("tv")}>On Tv</Button>
                 </ButtonGroup>
+                <h1>{popular.length}</h1>
             </Row>
         </div>
     )
