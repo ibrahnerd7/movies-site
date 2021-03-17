@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
 import { Card, CardImg, CardImgOverlay, Col, Row, Button } from 'reactstrap';
-import { IoAddCircle } from 'react-icons/io5'
 import './style.css'
 import { connect } from 'react-redux';
 import { requestTrendings } from '../../../application/actions-creators/trending';

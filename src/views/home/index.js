@@ -1,5 +1,5 @@
 import React from 'react';
-import {Trending, TagLine} from './components';
+import {Trending, TagLine, Popular} from './components';
 import {Container} from 'reactstrap';
 
 const Home=()=>{
@@ -8,6 +8,8 @@ const Home=()=>{
             <TagLine />
             <br />
             <Trending />
+            <br />
+            <Popular />
         </Container>
     )
 }
