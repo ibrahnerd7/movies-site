@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 
 const TagLine=()=>{
+  const [searchTerm,setSearchTerm]=useState('');
+  const history=useHistory()
+
     return(
         <div style={{backgroundImage: `url(${process.env.PUBLIC_URL + 'img/background_header.jpg'})`, 
          backgroundRepeat: 'no-repeat',
@@ -15,9 +19,9 @@ const TagLine=()=>{
         <br />
         <br />
         <InputGroup >
-        <Input />
+        <Input value={searchTerm} placeholder="Search for a movie, TV show , person ..." onChange={(event)=>setSearchTerm(event.target.value)}/>
         <InputGroupAddon addonType="append">
-          <Button color="success" >Search</Button>
+          <Button color="success" onClick={()=>history.push(`/search?query=${searchTerm}`)} >Search</Button>
         </InputGroupAddon>
       </InputGroup>
     </div>

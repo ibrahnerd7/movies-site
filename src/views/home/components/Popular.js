@@ -16,7 +16,7 @@ const PopularCard = ({ item }) => {
 }
 
 const Popular = () => {
-  const [activePopularType, setActivePopularType]=useState("tv");
+  const [activePopularType, setActivePopularType]=useState("movie");
   const {popular,loading}=useSelector(state=>state.populars);
   const dispatch=useDispatch()
 

@@ -6,6 +6,7 @@ import { Container } from 'reactstrap';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Movies } from './views/movies';
 import { Header } from './views/home/components';
+import { Search } from './views/search';
 
 const store = configureStore();
 
@@ -18,6 +19,9 @@ function App() {
           <Switch>
             <Route path="/movies/:term">
               <Movies />
+            </Route>
+            <Route path="/search">
+              <Search />
             </Route>
             <Route path="/">
               <Home />
