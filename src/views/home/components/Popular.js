@@ -32,8 +32,12 @@ const Popular = () => {
                     <Button color="primary" style={{ marginRight: 2 }} size="sm" onClick={()=>setActivePopularType("movie")}>Streaming</Button>
                     <Button color="secondary" size="sm" onClick={()=>setActivePopularType("tv")}>On Tv</Button>
                 </ButtonGroup>
-                <h1>{popular.length}</h1>
             </Row>
+            <Row className="flex-nowrap flex-row trending flex-1" >
+                    {
+                    popular.map((popularItem) => <PopularCard item={popularItem} key={popularItem.id} />)
+                }
+                </Row>
         </div>
     )
 }
