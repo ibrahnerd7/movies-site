@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { getSearchResults } from '../../infrastructure/services/api/search';
 import { requestSearchError, requestSearchSuccess } from '../actions-creators/search';
-import { SEARCH, TRENDING } from '../constants';
+import { SEARCH } from '../constants';
 
 export function* handleSearchLoad(action) {
     try {

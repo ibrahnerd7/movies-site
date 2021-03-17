@@ -1,10 +1,18 @@
 import React from 'react'
+import { useLocation } from 'react-router';
 import {
-    Container, Button, CardImg, CardTitle, CardText, Card,
-    CardSubtitle, CardBody
+    Container, CardText, Card,
+   CardBody
 } from 'reactstrap';
 
+const useQuery=()=>{
+    return new URLSearchParams(useLocation().search)
+}
+
 const Search = ({ }) => {
+    let query=useQuery();
+    const searchTerm=query.get("query");
+
     return (
         <Container >
             <main className="mt-4">
