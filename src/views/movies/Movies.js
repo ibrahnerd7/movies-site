@@ -45,7 +45,7 @@ const Movies = () => {
             <CardGroup>
                 {
                     movies.map((movie) => (
-                     <Movie movieItem={movie} />
+                     <Movie key={movie.id} movieItem={movie} />
                     ))
                 }
                 </CardGroup>

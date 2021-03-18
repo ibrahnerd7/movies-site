@@ -16,7 +16,7 @@ const searchReducer = (state = initialState, action) => {
             };
         case SEARCH.LOAD_SUCCESS:
             return {
-                trendings: action.trendings,
+                results: action.results,
                 loading: false,
                 error: false
             };

@@ -79,7 +79,6 @@ const Header = (props) => {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
-                    <NavLink href="#">Search</NavLink>
                     <NavbarText>Login</NavbarText>
                 </Collapse>
             </Navbar>
