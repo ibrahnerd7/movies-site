@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { buildUrl } from '../api/constants';
+import { buildUrl } from '../constants';
 
 const getPopularByType= async (popularType) => {
     try{
