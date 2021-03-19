@@ -9,9 +9,9 @@ const Person=({personItem})=>{
     return(
         <Col md="2" xs="6">
         <Card className="mt-2">
-            <CardImg top src={`https://www.themoviedb.org/t/p/w440_and_h660_face${personItem.poster_path}`} alt="Card image cap" />
+            <CardImg top src={`https://www.themoviedb.org/t/p/w440_and_h660_face${personItem.profile_path}`} alt="Card image cap" />
             <CardBody>
-                <CardTitle tag="h6" className="text-nowrap text-truncate" style={{width:"100%"}}>{personItem.title}</CardTitle>
+                <CardTitle tag="h6" className="text-nowrap text-truncate" style={{width:"100%"}}>{personItem.name}</CardTitle>
                 <CardSubtitle tag="p" className="mb-2 text-muted">{new Date(personItem.release_date).toLocaleDateString()}</CardSubtitle>
             </CardBody>
         </Card>
@@ -26,7 +26,6 @@ const People = () => {
     const { people } = useSelector(state => state.people);
     const dispatch = useDispatch()
 
-
     useEffect(() => {
         dispatch(requestPeople(normalizedPeopleTerm));
     }, [dispatch, normalizedPeopleTerm])
@@ -35,12 +34,12 @@ const People = () => {
 
     return (
         <Container>
-            <h1 className="mt-4 mb-4">{`${capitalizeTitle(term)} Movies`}</h1>
+            <h1 className="mt-4 mb-4">{`${capitalizeTitle(term)} People`}</h1>
             <Row className="flex-row">
             <CardGroup>
                 {
                     people.map((movie) => (
-                     <Person key={movie.id} movieItem={movie} />
+                     <Person key={movie.id} personItem={movie} />
                     ))
                 }
                 </CardGroup>

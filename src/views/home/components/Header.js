@@ -66,7 +66,7 @@ const PeopleHeaderItems=()=>{
             People
 </DropdownToggle>
         <DropdownMenu right>
-            <DropdownItem>
+            <DropdownItem href="/people/popular">
                 Popular people
 </DropdownItem>
         </DropdownMenu>

@@ -5,7 +5,7 @@ import { PEOPLE } from '../constants';
 
 export function* handlePeopleLoad(action) {
     try {
-        const people = yield call(getPeopleByType, action.people);
+        const people = yield call(getPeopleByType, action.peopleType);
         yield put(requestPeopleSuccess(people));
     }
     catch (error) {
