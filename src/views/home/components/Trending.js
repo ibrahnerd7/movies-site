@@ -1,11 +1,11 @@
 import React, { Component} from 'react';
-import { Card, CardImg, CardImgOverlay, Col, Row, Button } from 'reactstrap';
+import { Card, CardImg, Col, Row, Button } from 'reactstrap';
 import './style.css'
 import { connect } from 'react-redux';
 import { requestTrendings } from '../../../application/actions-creators/trending';
 
 const TrendingCard = ({ item }) => {
-    return <Col md="2" xs="6" >
+    return <Col md="2" xs="6" style={{cursor:"pointer"}}>
         <Card inverse>
             <CardImg src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt="Card image cap" />
         </Card>
@@ -15,6 +15,7 @@ const TrendingCard = ({ item }) => {
 }
 
 class Trending extends Component {
+
 componentDidMount(){
     this.props.fetchTrendings('day')
 }

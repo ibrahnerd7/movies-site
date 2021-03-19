@@ -7,12 +7,13 @@ import {requestPeople} from '../../application/actions-creators/people'
 
 const Person=({personItem})=>{
     return(
-        <Col md="2" xs="6">
+        <Col md="2" xs="5">
         <Card className="mt-2">
             <CardImg top src={`https://www.themoviedb.org/t/p/w440_and_h660_face${personItem.profile_path}`} alt="Card image cap" />
             <CardBody>
                 <CardTitle tag="h6" className="text-nowrap text-truncate" style={{width:"100%"}}>{personItem.name}</CardTitle>
-                <CardSubtitle tag="p" className="mb-2 text-muted">{new Date(personItem.release_date).toLocaleDateString()}</CardSubtitle>
+             <CardSubtitle tag="p" className="mb-2 text-muted">{personItem.known_for[0].original_title}</CardSubtitle>
+                
             </CardBody>
         </Card>
         </Col>

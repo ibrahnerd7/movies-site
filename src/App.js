@@ -8,7 +8,8 @@ import { Movies } from './views/movies';
 import { Header } from './views/home/components';
 import { Search } from './views/search';
 import Shows from './views/shows';
-import People from './views/people/People';
+import {People} from './views/people';
+import {Details} from "./views/details";
 
 const store = configureStore();
 
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <Route path="/search">
               <Search />
+            </Route>
+             <Route path="/movie/:id">
+              <Details />
             </Route>
             <Route path="/">
               <Home />
