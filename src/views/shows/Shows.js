@@ -20,7 +20,6 @@ const ShowsItem=({showItem})=>{
 
 const Shows = () => {
     const { term } = useParams();
-    console.log(term);
     const normalizedShowTerm =term.replace('-',"_")
 
     const { shows } = useSelector(state => state.shows);
