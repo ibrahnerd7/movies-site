@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { getPopularByType } from '../../infrastructure/services/popular/popular';
+import { getPopularByType } from '../../infrastructure/services/api/popular';
 import { requestPopularSuccess } from '../actions-creators/popular';
 import { POPULAR } from '../constants';
 
