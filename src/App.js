@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Movies } from './views/movies';
 import { Header } from './views/home/components';
 import { Search } from './views/search';
+import Shows from './views/shows';
 
 const store = configureStore();
 
@@ -19,6 +20,9 @@ function App() {
           <Switch>
             <Route path="/movies/:term">
               <Movies />
+            </Route>
+            <Route path="/shows/:term">
+              <Shows />
             </Route>
             <Route path="/search">
               <Search />

@@ -16,7 +16,7 @@ const showsReducer = (state = initialState, action) => {
             };
         case SHOWS.LOAD_SUCCESS:
             return {
-                shows: action.popular,
+                shows: action.shows,
                 loading: false,
                 error: false
             };

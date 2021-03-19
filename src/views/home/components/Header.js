@@ -5,7 +5,6 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavLink,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
@@ -38,7 +37,44 @@ const MoviesHeaderItems=()=>{
     )
 }
 
-const Header = (props) => {
+const ShowsHeaderItems=()=>{
+    return(
+        <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav caret>TV Shows </DropdownToggle>
+        <DropdownMenu right>
+            <DropdownItem href="/shows/popular">
+                Popular
+</DropdownItem>
+            <DropdownItem href="/shows/airing-today">
+                Airing Today
+</DropdownItem>
+            <DropdownItem href="/shows/on_the_air">
+                On TV
+</DropdownItem>
+            <DropdownItem href="/shows/top-rated">
+                Top rated
+</DropdownItem>
+        </DropdownMenu>
+    </UncontrolledDropdown>
+    )
+}
+
+const PeopleHeaderItems=()=>{
+    return(
+        <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav caret>
+            People
+</DropdownToggle>
+        <DropdownMenu right>
+            <DropdownItem>
+                Popular people
+</DropdownItem>
+        </DropdownMenu>
+    </UncontrolledDropdown>
+    )
+}
+
+const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
@@ -51,33 +87,8 @@ const Header = (props) => {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                      <MoviesHeaderItems />
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>TV Shows </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>
-                                    Popular
-                </DropdownItem>
-                                <DropdownItem>
-                                    Airing Today
-                </DropdownItem>
-                                <DropdownItem>
-                                    On TV
-                </DropdownItem>
-                                <DropdownItem>
-                                    Top rated
-                </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav caret>
-                                People
-              </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem>
-                                    Popular people
-                </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
+                       <ShowsHeaderItems />
+                      <PeopleHeaderItems />
                     </Nav>
                     <NavbarText>Login</NavbarText>
                 </Collapse>
