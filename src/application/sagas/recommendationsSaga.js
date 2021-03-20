@@ -1,11 +1,11 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { getMovieById } from '../../infrastructure/services/api/reco';
+import { getRecommendationsByMovie } from '../../infrastructure/services/api/recommendations';
 import {requestRecommendationsSuccess, requestRecommendationsError } from '../actions-creators/recommendations';
 import { RECOMMENDATIONS } from '../constants';
 
 export function* handleRecommendationsLoad(action) {
     try {
-        const movie = yield call(getMovieById, action.movieId);
+        const movie = yield call(getRecommendationsByMovie, action.movieId);
         yield put(requestRecommendationsSuccess(movie));
     }
     catch (error) {
