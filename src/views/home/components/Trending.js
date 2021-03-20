@@ -1,11 +1,12 @@
-import React, { Component} from 'react';
+import React, { useEffect, useState} from 'react';
 import { Card, CardImg, Col, Row, Button } from 'reactstrap';
 import './style.css'
-import { connect } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 import { requestTrendings } from '../../../application/actions-creators/trending';
+import { useHistory } from 'react-router';
 
-const TrendingCard = ({ item }) => {
-    return <Col md="2" xs="6" style={{cursor:"pointer"}}>
+const TrendingCard = ({ item ,history}) => {
+    return <Col md="2" xs="6" onClick={()=>history.push(`/movie/${item.id}`)} style={{cursor:"pointer"}}>
         <Card inverse>
             <CardImg src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt="Card image cap" />
         </Card>
@@ -14,45 +15,37 @@ const TrendingCard = ({ item }) => {
     </Col>;
 }
 
-class Trending extends Component {
+const Trending =()=> {
+    const [activeTimeWindow, setActiveTimeWindow]=useState("day");
+    const {trendings,loading}=useSelector(state=>state.trendings);
 
-componentDidMount(){
-    this.props.fetchTrendings('day')
-}
+    const dispatch=useDispatch()
+    const history=useHistory()
+  
+  
+    useEffect(()=>{
+    dispatch(requestTrendings(activeTimeWindow));
+    },[activeTimeWindow, dispatch])
 
-    render() {
+
         return (
             <div className="flex-1" >
                 <div className="clearfix mt-5 mb-2">
                     <h4 className="float-left">Trending</h4>
-                    <Button color="primary" size="sm" onClick={() =>this.props.fetchTrendings('day')}>Today</Button>{' '}
-                    <Button color="secondary" size="sm" onClick={() => this.props.fetchTrendings('week')}>This week</Button>
+                    <Button color="primary" size="sm" onClick={() =>setActiveTimeWindow("day")}>Today</Button>{' '}
+                    <Button color="secondary" size="sm" onClick={() => setActiveTimeWindow("week")}>This week</Button>
                 </div>
                 <Row className="flex-nowrap flex-row trending flex-1" >
                     {
-                    this.props.trendings.map((trendingItem) => <TrendingCard item={trendingItem} key={trendingItem.id} />)
+                    trendings.map((trendingItem) => <TrendingCard item={trendingItem} key={trendingItem.id} history={history}/>)
                 }
                 </Row>
             </div>
         )
-    }
+    
 
 }
 
-const mapStateToProps = (state) => {
-    return {
-        trendings: state.trendings.trendings
-    }
-}
-
-
-const mapDispatchToProps = (dispatch) => {
-    return{
-        fetchTrendings:(timeWindow)=>dispatch(requestTrendings(timeWindow))
-    }
-}
-
-
-export default connect(mapStateToProps,mapDispatchToProps)(Trending);
+export default Trending;
 
 

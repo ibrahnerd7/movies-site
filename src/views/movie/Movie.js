@@ -42,16 +42,17 @@ const Movie = () => {
                 paddingTop: 116,
                 paddingBottom: 76,
                 paddingLeft: 24,
-                backgroundSize: "initial",
+                width:"100%",
+                backgroundSize: "cover",
             }}>
                 <Col md="2" xs="6" >
                     <Card inverse>
                         <CardImg src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`} alt="Card image cap" />
                     </Card>
                 </Col>
-                <Col style={{ marginTop: 16 }}>
-                    <h4 className="text-black">{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
-                    <Row>
+                <Col style={{ marginTop: 16 }} className="text-white">
+                    <h4 >{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
+                    <Row className="ml-1 ">
                         {movie.genres && movie.genres.map((genre) => <p key={genre.id}>{genre.name} ,</p>)}
                     </Row>
                     <h5>Overview</h5>
