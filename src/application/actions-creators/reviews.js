@@ -7,9 +7,9 @@ export const requestReviews = (movieId) => ({
     movieId,
 });
 
-export const requestReviewsSuccess = movie => ({
+export const requestReviewsSuccess = reviews => ({
     type: REVIEWS.LOAD_SUCCESS,
-    movie,
+    reviews,
 });
 
 export const requestReviewsError = () => ({

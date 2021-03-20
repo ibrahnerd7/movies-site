@@ -5,8 +5,8 @@ import { REVIEWS } from '../constants';
 
 export function* handleReviewsLoad(action) {
     try {
-        const movie = yield call(getReviewsByMovie, action.movieId);
-        yield put(requestReviewsSuccess(movie));
+        const reviews = yield call(getReviewsByMovie, action.movieId);
+        yield put(requestReviewsSuccess(reviews));
     }
     catch (error) {
         yield put(requestReviewsError())
