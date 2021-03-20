@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { requestMovie } from '../../application/actions-creators/movie';
 import { requestReviews } from '../../application/actions-creators/reviews';
-import { Col, Row, Card, CardImg } from 'reactstrap';
+import { Col, Row, Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import './styles.css';
 
 const Movie = () => {
     const { id } = useParams();
@@ -17,7 +18,6 @@ const Movie = () => {
         dispatch(requestMovie(id));
         dispatch(requestReviews(id));
     }, [dispatch, id])
-console.log(reviews)
     return (
         <main>
             <Row>
@@ -36,8 +36,19 @@ console.log(reviews)
                 </Col>
             </Row>
             <Col>
-                    <h4 className="text-black" style={{ marginTop: 32 }}>Reviews</h4>
-
+                <h4 className="text-black" style={{ marginTop: 32 }}>Reviews</h4>
+                {reviews.map((review) => <Row key={review.id} >
+                    <Card className="mt-2 p-2" style={{backgroundColor:"white"}}>
+                        <Row>
+                        <img  src={`${review.author_details.avatar_path}`.substring(1)} alt="Card cap" style={{width:76, height:76,borderRadius:48, marginLeft:16, marginTop:16}} />
+                        <Col>
+                            <h6  className="text-nowrap text-truncate" style={{ width: "100%" }}>{review.author}</h6>
+                            <p  className="mb-2  content">{review.content}</p>
+                            <p  className="mb-2 text-muted">{new Date(review.created_at).toLocaleDateString()}</p>
+                        </Col>
+                        </Row>
+                    </Card>
+                </Row>)}
             </Col>
         </main>
     )
