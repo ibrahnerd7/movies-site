@@ -7,4 +7,9 @@ const getMoviesByTerm = async (term) => {
     return response.data.results;
 }
 
-export {getMoviesByTerm}
+const getMovieById = async (movieId) => {
+    const response = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=d9a1f141ddec95a6af5324e99ba4c5d9`);
+    return response.data.results;
+}
+
+export {getMoviesByTerm, getMovieById}
