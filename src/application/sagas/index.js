@@ -4,7 +4,8 @@ import popularSaga from './popularSaga';
 import searchSaga from './searchSaga';
 import showsSaga from './showsSaga';
 import peopleSaga from './peopleSaga';
+import movieSaga from './movieSaga';
 
 export default function* rootSaga(){
-    yield all([trendingSaga(),popularSaga(),searchSaga(),showsSaga(),peopleSaga()]);
+    yield all([trendingSaga(),popularSaga(),searchSaga(),showsSaga(),peopleSaga(), movieSaga()]);
 }

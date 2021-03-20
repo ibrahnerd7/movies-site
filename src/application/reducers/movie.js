@@ -1,7 +1,7 @@
 import { MOVIE } from "../constants";
 
 const initialState = {
-    movie: [],
+    movie: {},
     loading: false,
     error: false
 }
@@ -10,7 +10,7 @@ const movieReducer = (state = initialState, action) => {
     switch (action.type) {
         case MOVIE.LOAD:
             return {
-                movie: [],
+                movie:{},
                 loading: true,
                 error: false,
             };
@@ -22,7 +22,7 @@ const movieReducer = (state = initialState, action) => {
             };
         case MOVIE.LOAD_FAIL:
             return {
-                movie: [],
+                movie: {},
                 loading: false,
                 error: true
             };

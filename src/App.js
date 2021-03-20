@@ -9,7 +9,7 @@ import { Header } from './views/home/components';
 import { Search } from './views/search';
 import Shows from './views/shows';
 import {People} from './views/people';
-import {Details} from "./views/details";
+import { Movie } from './views/movie';
 
 const store = configureStore();
 
@@ -33,7 +33,7 @@ function App() {
               <Search />
             </Route>
              <Route path="/movie/:id">
-              <Details />
+              <Movie />
             </Route>
             <Route path="/">
               <Home />
