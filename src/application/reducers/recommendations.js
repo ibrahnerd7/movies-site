@@ -16,7 +16,7 @@ const recommendationsReducer = (state = initialState, action) => {
             };
         case RECOMMENDATIONS.LOAD_SUCCESS:
             return {
-                recommendations: action.popular,
+                recommendations: action.recommendations,
                 loading: false,
                 error: false
             };
