@@ -8,8 +8,9 @@ import { Movies } from './views/movies';
 import { Header } from './views/home/components';
 import { Search } from './views/search';
 import Shows from './views/shows';
-import {People} from './views/people';
+import { People } from './views/people';
 import { Movie } from './views/movie';
+import Footer from './views/footer';
 
 const store = configureStore();
 
@@ -20,7 +21,7 @@ function App() {
         <Container fluid>
           <Header />
           <Switch>
-          <Route path="/people/:term">
+            <Route path="/people/:term">
               <People />
             </Route>
             <Route path="/movies/:term">
@@ -32,13 +33,14 @@ function App() {
             <Route path="/search">
               <Search />
             </Route>
-             <Route path="/movie/:id">
+            <Route path="/movie/:id">
               <Movie />
             </Route>
             <Route path="/">
               <Home />
             </Route>
           </Switch>
+          <Footer />
         </Container>
       </BrowserRouter>
     </Provider>
