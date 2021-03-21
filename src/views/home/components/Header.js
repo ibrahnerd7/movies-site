@@ -90,7 +90,7 @@ const Header = () => {
                        <ShowsHeaderItems />
                       <PeopleHeaderItems />
                     </Nav>
-                    <NavbarText>Login</NavbarText>
+                    <NavbarText> <a href="/signin">Sign In</a></NavbarText>
                 </Collapse>
             </Navbar>
         </div>

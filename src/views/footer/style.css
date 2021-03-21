@@ -1,22 +1,22 @@
-a:link {
+p > a:link {
     color: white;
     background-color: transparent;
     text-decoration: none;
   }
   
-  a:visited {
+  p > a:visited {
     color: white;
     background-color: transparent;
     text-decoration: none;
   }
   
-  a:hover {
+  p > a:hover {
     color: green;
     background-color: transparent;
     text-decoration: underline;
   }
   
-  a:active {
+  p > a:active {
     color: yellow;
     background-color: transparent;
     text-decoration: underline;

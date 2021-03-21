@@ -11,6 +11,7 @@ import Shows from './views/shows';
 import { People } from './views/people';
 import { Movie } from './views/movie';
 import Footer from './views/footer';
+import SignIn from './views/signin';
 
 const store = configureStore();
 
@@ -18,7 +19,7 @@ function App() {
   return (
     <Provider store={store} >
       <BrowserRouter>
-        <Container fluid>
+        <Container fluid style={{backgroundColor:"whitesmoke"}}>
           <Header />
           <Switch>
             <Route path="/people/:term">
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route path="/movie/:id">
               <Movie />
+            </Route>
+            <Route path="/signin">
+              <SignIn />
             </Route>
             <Route path="/">
               <Home />
