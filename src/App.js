@@ -12,6 +12,7 @@ import { People } from './views/people';
 import { Movie } from './views/movie';
 import Footer from './views/footer';
 import SignIn from './views/signin';
+import SignUp from './views/signup';
 
 const store = configureStore();
 
@@ -39,6 +40,9 @@ function App() {
             </Route>
             <Route path="/signin">
               <SignIn />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
             </Route>
             <Route path="/">
               <Home />
