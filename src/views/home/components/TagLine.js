@@ -8,12 +8,13 @@ const TagLine = () => {
 
   return (
     <div style={{
-      backgroundImage: `url(${process.env.PUBLIC_URL + 'img/background_header.jpg'})`,
-      backgroundRepeat: 'no-repeat',
+      backgroundImage: `url(https://pbs.twimg.com/profile_banners/35701585/1585337833/600x200)`,
+      backgroundSize:"cover",
       paddingTop: 116,
-      paddingBottom: 76,
+      marginTop:-56,
+      paddingBottom: 176,
       paddingLeft: 24,
-      paddingRight: 24
+      paddingRight: 24,
     }}>
       <h1 className="text-white">Welcome .</h1>
       <h5 className="text-white">Millions of movies, TV shows and people to discover. Explore now.</h5>
