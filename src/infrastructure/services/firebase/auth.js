@@ -28,6 +28,24 @@ export const signOutUser = async () => {
 }
 
 //get user profile
+export const getUserProfile=async () =>{
+    let profile={}
+    const user=authentication.currentUser; 
+    let name, email, photoUrl, uid, emailVerified;
+
+    if(user !=null){
+        name = user.displayName;
+        email = user.email;
+        photoUrl = user.photoURL;
+        emailVerified = user.emailVerified;
+        uid = user.uid; 
+
+        profile={name,email,photoUrl,emailVerified, uid};
+    }
+
+    return profile;
+    
+}
 
 //update user profile
 export const updateUser = async (displayName, photoURL) => {
