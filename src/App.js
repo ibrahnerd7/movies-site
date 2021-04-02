@@ -13,6 +13,7 @@ import { Movie } from './views/movie';
 import Footer from './views/footer';
 import SignIn from './views/signin';
 import SignUp from './views/signup';
+import ForgotPassword from './views/forgotpassword';
 
 const store = configureStore();
 
@@ -43,6 +44,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignUp />
+            </Route>
+            <Route path="/forgotpassword">
+              <ForgotPassword />
             </Route>
             <Route path="/">
               <Home />

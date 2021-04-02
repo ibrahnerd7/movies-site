@@ -12,7 +12,6 @@ const SignIn = () => {
     const signInUser = async (e) => {
         e.preventDefault()
         let user = await loginUser(email, password);
-        console.log(user)
         if (!user.uid) {
             setError(user.message)
         } else {
@@ -43,7 +42,10 @@ const SignIn = () => {
                      onChange={(event)=>setPassword(event.target.value)}
                       />
                     <Button className="mt-2" color="primary" size="lg" block onClick={signInUser}>Sign In</Button>
+                    <Row className="justify-content-between">
                     <a href="/signup">Don't have an account?</a>
+                      <a href="/signup">Forgot passwor</a>
+                    </Row>
                 </Col>
             </Row>
         </Container>

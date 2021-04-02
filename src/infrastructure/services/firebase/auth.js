@@ -44,7 +44,6 @@ export const getUserProfile=async () =>{
     }
 
     return profile;
-    
 }
 
 //update user profile
@@ -53,5 +52,16 @@ export const updateUser = async (displayName, photoURL) => {
         return await (authentication.currentUser.updateProfile({displayName, photoURL}))
     } catch (error) {
         return error
+    }
+}
+
+//Send password reset email
+export const sendResetEmail=async (email)=>{
+    try {
+   const sent= authentication.sendPasswordResetEmail(email)
+   console.log(sent)
+   return sent;
+    } catch (error) {
+      throw new Error(error.message);  
     }
 }
