@@ -17,6 +17,11 @@ const SignUp = () => {
         if (!user.uid) {
             setError(user.message)
         } else {
+
+            /**
+             * Store user in firebase  for favourites
+             */
+
             history.push("/profile")
         }
 

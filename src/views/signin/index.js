@@ -44,7 +44,7 @@ const SignIn = () => {
                     <Button className="mt-2" color="primary" size="lg" block onClick={signInUser}>Sign In</Button>
                     <Row className="justify-content-between">
                     <a href="/signup">Don't have an account?</a>
-                      <a href="/signup">Forgot passwor</a>
+                      <a href="/signup">Forgot password</a>
                     </Row>
                 </Col>
             </Row>
