@@ -12,7 +12,7 @@ const TagLine = () => {
       backgroundSize:"100%",
       backgroundRepeat:"no-repeat",
       paddingTop: 176,
-      marginTop:-56,
+      // marginTop:-56,
       paddingBottom: 176,
       paddingLeft: 24,
       paddingRight: 24,

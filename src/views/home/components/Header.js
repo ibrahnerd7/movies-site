@@ -80,7 +80,7 @@ const Header = () => {
     const toggle = () => setIsOpen(!isOpen);
 
     return (
-        <div >
+        <div className="py-3">
             <Navbar color="light" light expand="md" >
                 <NavbarBrand href="/">Movies Site</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
@@ -90,7 +90,10 @@ const Header = () => {
                        <ShowsHeaderItems />
                       <PeopleHeaderItems />
                     </Nav>
+                    <Nav className="ml-auto" navbar>
+                    <NavbarText className="mx-2"> <a href="/signin">Search</a></NavbarText>
                     <NavbarText> <a href="/signin">Sign In</a></NavbarText>
+                    </Nav>
                 </Collapse>
             </Navbar>
         </div>
