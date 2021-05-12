@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './views/home';
 import { Provider } from 'react-redux';
 import configureStore from './application/store';
-import { Container } from 'reactstrap';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Movies } from './views/movies';
 import { Header } from './views/home/components';
@@ -21,7 +20,7 @@ function App() {
   return (
     <Provider store={store} >
       <BrowserRouter>
-        <div fluid style={{backgroundColor:"whitesmoke"}}>
+        <div>
           <Header />
           <Switch>
             <Route path="/people/:term">

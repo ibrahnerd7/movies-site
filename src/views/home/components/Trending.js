@@ -29,12 +29,15 @@ const Trending =()=> {
 
 
         return (
-            <div className="flex-1" >
-                <div className="clearfix mt-5 mb-2">
-                    <h4 className="float-left text-white">Trending</h4>
-                    <Button color="primary" size="sm" onClick={() =>setActiveTimeWindow("day")}>Today</Button>{' '}
-                    <Button color="secondary" size="sm" onClick={() => setActiveTimeWindow("week")}>This week</Button>
-                </div>
+            <div className="flex-1 flex-col" >
+                <Row className="mt-5 ml-1">
+                    <h4 className="text-white ">Trending</h4>
+                    <Row  className="m-1">
+                        <p onClick={() =>setActiveTimeWindow("day")} style={{cursor:"pointer", borderWidth:1, borderColor:"#25a2b8", borderStyle:"solid",width:100, textAlign:"center", borderRadius:50,marginRight:8}} className="text-white">Today</p>
+                        <p  onClick={() => setActiveTimeWindow("week")} style={{cursor:"pointer",borderWidth:1, borderColor:"#25a2b8", borderStyle:"solid",width:100, textAlign:"center", borderRadius:50,marginLeft:8}} className="text-white">This week</p>
+                        </Row>
+  
+                </Row>
                 <Row className="flex-nowrap flex-row trending flex-1" >
                     {
                     trendings.map((trendingItem) => <TrendingCard item={trendingItem} key={trendingItem.id} history={history}/>)

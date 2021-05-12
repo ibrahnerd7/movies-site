@@ -11,12 +11,15 @@ import {
     DropdownItem,
     NavbarText
 } from 'reactstrap';
+import {FiChevronDown} from 'react-icons/fi'
+import {FiSearch} from 'react-icons/fi'
+import {FiBookmark} from 'react-icons/fi'
 
 const MoviesHeaderItems=()=>{
     return(
         <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav caret>
-            Movies
+        <DropdownToggle nav>
+            Movies <FiChevronDown />
 </DropdownToggle>
         <DropdownMenu right>
             <DropdownItem  href="/movies/popular">
@@ -40,7 +43,7 @@ const MoviesHeaderItems=()=>{
 const ShowsHeaderItems=()=>{
     return(
         <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav caret>TV Shows </DropdownToggle>
+        <DropdownToggle nav >TV Shows<FiChevronDown /> </DropdownToggle>
         <DropdownMenu right>
             <DropdownItem href="/shows/popular">
                 Popular
@@ -62,8 +65,8 @@ const ShowsHeaderItems=()=>{
 const PeopleHeaderItems=()=>{
     return(
         <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav caret>
-            People
+        <DropdownToggle nav >
+            People <FiChevronDown />
 </DropdownToggle>
         <DropdownMenu right>
             <DropdownItem href="/people/popular">
@@ -79,24 +82,23 @@ const Header = () => {
 
     const toggle = () => setIsOpen(!isOpen);
 
-    return (
-        <div className="py-3">
-            <Navbar color="light" light expand="md" >
+    return ( 
+            <Navbar style={{backgroundColor:"#24282d"}} expand="md"  >
                 <NavbarBrand href="/">Movies Site</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
+                    <Nav className="mr-auto" >
                      <MoviesHeaderItems />
                        <ShowsHeaderItems />
                       <PeopleHeaderItems />
                     </Nav>
                     <Nav className="ml-auto" navbar>
-                    <NavbarText className="mx-2"> <a href="/signin">Search</a></NavbarText>
-                    <NavbarText> <a href="/signin">Sign In</a></NavbarText>
+                    <NavbarText className="mx-2"> <a href="/signin"><FiSearch size={32}/></a></NavbarText>
+                    <NavbarText className="mx-2"> <a href="/signin"><FiBookmark size={32}/></a></NavbarText>
+                    {/* <NavbarText> <a href="/signin">Sign In</a></NavbarText> */}
                     </Nav>
                 </Collapse>
             </Navbar>
-        </div>
     );
 }
 
