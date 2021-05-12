@@ -21,7 +21,7 @@ function App() {
   return (
     <Provider store={store} >
       <BrowserRouter>
-        <Container fluid style={{backgroundColor:"whitesmoke"}}>
+        <div fluid style={{backgroundColor:"whitesmoke"}}>
           <Header />
           <Switch>
             <Route path="/people/:term">
@@ -53,7 +53,7 @@ function App() {
             </Route>
           </Switch>
           <Footer />
-        </Container>
+        </div>
       </BrowserRouter>
     </Provider>
   );

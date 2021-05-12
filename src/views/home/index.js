@@ -4,7 +4,7 @@ import {Container} from 'reactstrap';
 
 const Home=()=>{
     return(
-        <Container fluid>
+        <Container style={{backgroundColor:"#000000"}}  fluid>
             <TagLine />
             <br />
             <Trending />
