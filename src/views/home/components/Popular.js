@@ -30,12 +30,12 @@ const Popular = () => {
 
     return (
         <div>
-            <Row>
+            <Row className="mt-5 ml-1">
                 <h3 className="text-white">What's popular</h3>
-                <ButtonGroup size="sm">
-                    <Button color="primary" style={{ marginRight: 2 }} size="sm" onClick={()=>setActivePopularType("movie")}>Streaming</Button>
-                    <Button color="secondary" size="sm" onClick={()=>setActivePopularType("tv")}>On Tv</Button>
-                </ButtonGroup>
+                <Row  className="m-1">
+                        <p onClick={() =>setActivePopularType("movie")} style={{cursor:"pointer", borderWidth:1, borderColor:"#25a2b8", borderStyle:"solid",width:100, textAlign:"center", borderRadius:50,marginRight:8}} className="text-white">Streaming</p>
+                        <p  onClick={() => setActivePopularType("tv")} style={{cursor:"pointer",borderWidth:1, borderColor:"#25a2b8", borderStyle:"solid",width:100, textAlign:"center", borderRadius:50,marginLeft:8}} className="text-white">On Tv</p>
+                        </Row>
             </Row>
             <Row className="flex-nowrap flex-row trending flex-1" >
                     {

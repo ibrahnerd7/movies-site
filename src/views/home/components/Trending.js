@@ -29,7 +29,7 @@ const Trending =()=> {
 
 
         return (
-            <div className="flex-1 flex-col" >
+            <div >
                 <Row className="mt-5 ml-1">
                     <h4 className="text-white ">Trending</h4>
                     <Row  className="m-1">
