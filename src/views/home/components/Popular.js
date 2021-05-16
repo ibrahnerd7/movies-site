@@ -10,7 +10,7 @@ const PopularCard = ({item,history}) => {
 
     return  <Col md="2" xs="6" onClick={()=>history.push(`/movie/${item.id}`)} style={{cursor:"pointer"}}>
         <Card inverse style={{border:"none"}}>
-            <CardImg  src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt="Card image cap" />
+            <CardImg style={{borderRadius:16}} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt="Card image cap" />
         </Card>
         <h6 className="text-white">{item.original_title || item.title}</h6>
         <p className="text-white">{new Date(item.release_date).toLocaleDateString()}</p>

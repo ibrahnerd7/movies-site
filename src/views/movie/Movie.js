@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { requestMovie } from '../../application/actions-creators/movie';
 import { requestReviews } from '../../application/actions-creators/reviews';
 import { requestRecommendations } from '../../application/actions-creators/recommendations';
@@ -8,12 +8,11 @@ import { Col, Row, Card, CardImg } from 'reactstrap';
 import './styles.css';
 
 const Movie = () => {
-    const { id } = useParams();
-
+    const [id,setId]=useState(useParams().id)
     const { movie } = useSelector(state => state.movie);
     const { reviews } = useSelector(state => state.reviews);
     const { recommendations } = useSelector(state => state.recommendations);
-
+    const history=useHistory()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -37,7 +36,7 @@ const Movie = () => {
                 <h4 className="text-black" style={{ marginTop: 32 }}>Recommendations</h4>
                 <Row className="mt-4 flex-nowrap flex-row recommendations flex-1">
                     {
-                        recommendations.map((recommendation) => <RecommendationsCard recommendation={recommendation} key={recommendation.id} />)
+                        recommendations.map((recommendation) => <RecommendationsCard recommendation={recommendation} key={recommendation.id} history={history} setId={setId} />)
                     }
                 </Row>
             </Col>
@@ -45,10 +44,13 @@ const Movie = () => {
     )
 }
 
-const RecommendationsCard = ({ recommendation }) => {
-    return <Col md="2" xs="6" style={{ cursor: "pointer" }}>
-        <Card inverse>
-            <CardImg src={`https://www.themoviedb.org/t/p/w440_and_h660_face${recommendation.poster_path}`} alt="Card image cap" />
+const RecommendationsCard = ({ recommendation,history, setId }) => {
+    return <Col md="2" xs="6" style={{ cursor: "pointer" }}   onClick={()=>{
+         setId(recommendation.id)  
+        history.push(`/movie/${recommendation.id}`)
+        }}>
+        <Card inverse style={{border:"none",}}>
+            <CardImg style={{borderRadius:16}} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${recommendation.poster_path}`} alt="Card image cap" />
         </Card>
         <h6 className="text-black">{recommendation.original_title || recommendation.title}</h6>
         <p>{new Date(recommendation.release_date).toLocaleDateString()}</p>
@@ -72,8 +74,8 @@ const ReviewsCard = ({ review }) => {
 
 const MovieImage = ({movie}) => {
     return <Col md="2" xs="6" >
-        <Card inverse>
-            <CardImg src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`} alt="Card image cap" />
+        <Card inverse style={{border:"none"}}>
+            <CardImg style={{borderRadius:16}} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`} alt="Card image cap" />
         </Card>
     </Col>
 }
