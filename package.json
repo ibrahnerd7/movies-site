@@ -1,6 +1,6 @@
 {
   "name": "movie-site",
-  "homepage": "https://ibrahnerd7.github.io/movies-site",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
