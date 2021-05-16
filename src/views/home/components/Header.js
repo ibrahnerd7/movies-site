@@ -9,11 +9,10 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-    NavbarText
+    Button,
 } from 'reactstrap';
-import {FiChevronDown} from 'react-icons/fi'
-import {FiSearch} from 'react-icons/fi'
-import {FiBookmark} from 'react-icons/fi'
+import {FiChevronDown, FiArrowRight} from 'react-icons/fi'
+import { loginUser } from '../../../infrastructure/services/firebase/auth';
 
 const MoviesHeaderItems=()=>{
     return(
@@ -93,9 +92,9 @@ const Header = () => {
                       <PeopleHeaderItems />
                     </Nav>
                     <Nav className="ml-auto" navbar>
-                    <NavbarText className="mx-2"> <a href="/signin"><FiSearch size={32}/></a></NavbarText>
-                    <NavbarText className="mx-2"> <a href="/signin"><FiBookmark size={32}/></a></NavbarText>
-                    {/* <NavbarText> <a href="/signin">Sign In</a></NavbarText> */}
+                    {/* <NavbarText className="mx-2"> <a href="/signin"><FiSearch size={32}/></a></NavbarText> */}
+                    {/* <NavbarText className="mx-2"> <a href="/signin"><FiBookmark size={32}/></a></NavbarText> */}
+                    <Button color="info" onClick={() =>loginUser()} > Sign In </Button>
                     </Nav>
                 </Collapse>
             </Navbar>

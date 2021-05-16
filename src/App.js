@@ -13,6 +13,7 @@ import Footer from './views/footer';
 import SignIn from './views/signin';
 import SignUp from './views/signup';
 import ForgotPassword from './views/forgotpassword';
+import { loginUser } from './infrastructure/services/firebase/auth';
 
 const store = configureStore();
 

@@ -1,4 +1,4 @@
-import {authentication} from './config'
+import {authentication, provider} from './config'
 
 //register user
 export const registerUser = async (email, password) => {
@@ -10,9 +10,9 @@ export const registerUser = async (email, password) => {
 }
 
 //login user
-export const loginUser = async (email, password) => {
+export const loginUser = async () => {
     try {
-        return (await authentication.signInWithEmailAndPassword(email, password)).user
+        return (await authentication.signInWithPopup(provider)).user
     } catch (error) {
         return error
     }
