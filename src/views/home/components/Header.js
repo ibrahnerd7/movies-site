@@ -13,7 +13,7 @@ import {
     Dropdown,
     Row,
 } from 'reactstrap';
-import {FiChevronDown, FiBookmark, FiLogOut, FiUser} from 'react-icons/fi'
+import {FiChevronDown, FiBookmark, FiLogOut, FiUser, FiHeart} from 'react-icons/fi'
 import { loginUser } from '../../../infrastructure/services/firebase/auth';
 import { authentication } from '../../../infrastructure/services/firebase/config';
 
@@ -105,7 +105,7 @@ const Header = ({user}) => {
                 </Row>
                 </DropdownToggle>
                  <DropdownMenu style={{borderColor:"white"}}>
-                   <DropdownItem><FiBookmark /> Saved</DropdownItem>
+                   <DropdownItem><FiHeart /> Favourites</DropdownItem>
                    <DropdownItem><FiUser /> Profile</DropdownItem>
                    <DropdownItem onClick={()=>authentication.signOut()}><FiLogOut/> Sign out</DropdownItem>
                  </DropdownMenu>

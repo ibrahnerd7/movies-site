@@ -19,7 +19,6 @@ const store = configureStore();
 
 function Application() {
   const user=useContext(UserContext);
-  console.log("Application", user);
   return (
     <Provider store={store} >
       <BrowserRouter>

@@ -4,7 +4,8 @@ import { useHistory, useParams } from 'react-router';
 import { requestMovie } from '../../application/actions-creators/movie';
 import { requestReviews } from '../../application/actions-creators/reviews';
 import { requestRecommendations } from '../../application/actions-creators/recommendations';
-import { Col, Row, Card, CardImg } from 'reactstrap';
+import { Col, Row, Card, CardImg, Button } from 'reactstrap';
+import {FiHeart} from 'react-icons/fi'
 import './styles.css';
 
 const Movie = () => {
@@ -49,7 +50,7 @@ const RecommendationsCard = ({ recommendation,history, setId }) => {
          setId(recommendation.id)  
         history.push(`/movie/${recommendation.id}`)
         }}>
-        <Card inverse style={{border:"none",}}>
+        <Card inverse style={{border:"none",borderRadius:16}}>
             <CardImg style={{borderRadius:16}} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${recommendation.poster_path}`} alt="Card image cap" />
         </Card>
         <h6 className="text-black">{recommendation.original_title || recommendation.title}</h6>
@@ -74,20 +75,23 @@ const ReviewsCard = ({ review }) => {
 
 const MovieImage = ({movie}) => {
     return <Col md="2" xs="6" >
-        <Card inverse style={{border:"none"}}>
+        <Card inverse style={{border:"none", borderRadius:16}}>
             <CardImg style={{borderRadius:16}} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`} alt="Card image cap" />
         </Card>
     </Col>
 }
 
 const MovieDescription = ({movie}) => {
-    return <Col style={{ marginTop: 16 }} className="text-white">
+    return <Col style={{ marginTop: 16 }} className="d-flex flex-column text-white justify-content-between">
         <h4 >{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
         <Row className="ml-1 ">
             {movie.genres && movie.genres.map((genre) => <p key={genre.id}>{genre.name} ,</p>)}
         </Row>
+        <div>
         <h5>Overview</h5>
         <p>{movie.overview}</p>
+        </div>
+        <Button color="success" style={{width:42,height:42, borderRadius:21}}><FiHeart /></Button>
     </Col>
 }
 
