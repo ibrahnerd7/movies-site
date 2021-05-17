@@ -13,7 +13,6 @@ const TagLine = () => {
       backgroundSize:"100%",
       backgroundRepeat:"no-repeat",
       paddingTop: 176,
-      // marginTop:56,
       paddingBottom: 176,
       paddingLeft: 24,
       paddingRight: 24,
@@ -22,7 +21,7 @@ const TagLine = () => {
       <h5 className="text-white">Millions of movies, TV shows and people to discover. Explore now.</h5>
       <br />
       <br />
-          <Button color="info" onClick={() => history.push(`/search?query=${searchTerm}`)} > Get started   <FiArrowRight /></Button>
+          <Button testid="btn-get-started" color="info" onClick={() => history.push(`/search?query=${searchTerm}`)} > Get started   <FiArrowRight /></Button>
     </div>
   )
 }
