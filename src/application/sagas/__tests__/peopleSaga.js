@@ -1,7 +1,18 @@
+import { takeEvery } from '@redux-saga/core/effects';
 import { runSaga } from 'redux-saga';
 import * as api from '../../../infrastructure/services/api/people'
 import { requestPeopleError, requestPeopleSuccess } from '../../actions-creators/people';
-import {handlePeopleLoad} from '../peopleSaga';
+import { PEOPLE } from '../../constants';
+import watchPeopleLoad, {handlePeopleLoad} from '../peopleSaga';
+
+test('should load people', async() => {
+    const gen =watchPeopleLoad();
+
+    const expected=takeEvery(PEOPLE.LOAD,handlePeopleLoad);
+    const actual=gen.next().value;
+
+    expect(actual).toEqual(expected);
+});
 
 test('should load people and handle them in case of success', async() => {
     const dispatchedActions=[];

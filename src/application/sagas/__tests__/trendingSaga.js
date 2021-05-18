@@ -1,7 +1,18 @@
+import { takeEvery } from '@redux-saga/core/effects';
 import { runSaga } from 'redux-saga';
 import * as api from '../../../infrastructure/services/api/trending'
 import {requestTrendingsError, requestTrendingsSuccess } from '../../actions-creators/trending';
-import {handleTrendingLoad} from '../trendingSaga';
+import { TRENDING } from '../../constants';
+import watchTrendingLoad, {handleTrendingLoad} from '../trendingSaga';
+
+test('should load trendings', async() => {
+    const gen =watchTrendingLoad();
+
+    const expected=takeEvery(TRENDING.LOAD,handleTrendingLoad);
+    const actual=gen.next().value;
+
+    expect(actual).toEqual(expected);
+});
 
 test('should load trendings and handle them in case of success', async() => {
     const dispatchedActions=[];

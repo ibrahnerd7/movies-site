@@ -1,7 +1,18 @@
+import { takeEvery } from '@redux-saga/core/effects';
 import { runSaga } from 'redux-saga';
 import * as api from '../../../infrastructure/services/api/movies'
 import { requestMovieError, requestMovieSuccess } from '../../actions-creators/movie';
-import {handleMovieLoad} from '../movieSaga';
+import { MOVIE } from '../../constants';
+import watchMovieLoad, {handleMovieLoad} from '../movieSaga';
+
+test('should load trendings', async() => {
+    const gen =watchMovieLoad();
+
+    const expected=takeEvery(MOVIE.LOAD,handleMovieLoad);
+    const actual=gen.next().value;
+
+    expect(actual).toEqual(expected);
+});
 
 test('should load movie and handle it in case of success', async() => {
     const dispatchedActions=[];

@@ -1,7 +1,18 @@
+import { takeEvery } from '@redux-saga/core/effects';
 import { runSaga } from 'redux-saga';
 import * as api from '../../../infrastructure/services/api/popular'
 import { requestPopularError, requestPopularSuccess } from '../../actions-creators/popular';
-import {handlePopularLoad} from '../popularSaga';
+import { POPULAR } from '../../constants';
+import watchPopularLoad, {handlePopularLoad} from '../popularSaga';
+
+test('should load popular', async() => {
+    const gen =watchPopularLoad();
+
+    const expected=takeEvery(POPULAR.LOAD,handlePopularLoad);
+    const actual=gen.next().value;
+
+    expect(actual).toEqual(expected);
+});
 
 test('should load popular and handle them in case of success', async() => {
     const dispatchedActions=[];

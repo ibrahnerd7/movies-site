@@ -1,8 +1,18 @@
+import { takeEvery } from '@redux-saga/core/effects';
 import { runSaga } from 'redux-saga';
 import * as api from '../../../infrastructure/services/api/recommendations'
-import { requestPeopleError } from '../../actions-creators/people';
 import { requestRecommendationsError, requestRecommendationsSuccess } from '../../actions-creators/recommendations';
-import {handleRecommendationsLoad} from '../recommendationsSaga';
+import { RECOMMENDATIONS } from '../../constants';
+import watchRecommendationsLoad, {handleRecommendationsLoad} from '../recommendationsSaga';
+
+test('should load recommendations', async() => {
+    const gen =watchRecommendationsLoad();
+
+    const expected=takeEvery(RECOMMENDATIONS.LOAD,handleRecommendationsLoad);
+    const actual=gen.next().value;
+
+    expect(actual).toEqual(expected);
+});
 
 test('should load recommendations and handle them in case of success', async() => {
     const dispatchedActions=[];

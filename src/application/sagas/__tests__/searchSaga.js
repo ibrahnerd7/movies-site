@@ -1,8 +1,19 @@
+import { takeEvery } from '@redux-saga/core/effects';
 import { runSaga } from 'redux-saga';
 import * as api from '../../../infrastructure/services/api/search'
 import { requestSearchError, requestSearchSuccess } from '../../actions-creators/search';
 import { } from '../../actions-creators/search';
-import { handleSearchLoad } from '../searchSaga';
+import { SEARCH } from '../../constants';
+import watchSearchLoad, { handleSearchLoad } from '../searchSaga';
+
+test('should load search', async() => {
+    const gen =watchSearchLoad();
+
+    const expected=takeEvery(SEARCH.LOAD,handleSearchLoad);
+    const actual=gen.next().value;
+
+    expect(actual).toEqual(expected);
+});
 
 test('should load search results and handle them in case of success', async() => {
     const dispatchedActions=[];
