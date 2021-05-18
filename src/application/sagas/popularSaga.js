@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { getPopularByType } from '../../infrastructure/services/api/popular';
-import { requestPopularSuccess } from '../actions-creators/popular';
+import { requestPopularError, requestPopularSuccess } from '../actions-creators/popular';
 import { POPULAR } from '../constants';
 
 export function* handlePopularLoad(action) {
@@ -9,7 +9,7 @@ export function* handlePopularLoad(action) {
         yield put(requestPopularSuccess(popular));
     }
     catch (error) {
-        yield put(requestPopularSuccess())
+        yield put(requestPopularError())
     }
 
 }

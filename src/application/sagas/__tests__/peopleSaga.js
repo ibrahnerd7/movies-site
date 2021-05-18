@@ -5,7 +5,7 @@ import {handlePeopleLoad} from '../peopleSaga';
 
 test('should load people and handle them in case of success', async() => {
     const dispatchedActions=[];
-    const mockedPeople={id:'123',name:"Movie one"};
+    const mockedPeople=[{id:'123',name:"Person one"}];
 
     api.getPeopleByType=jest.fn(()=>Promise.resolve(mockedPeople))
 
