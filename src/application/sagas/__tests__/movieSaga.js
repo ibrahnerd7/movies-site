@@ -1,7 +1,6 @@
 import { runSaga } from 'redux-saga';
 import * as api from '../../../infrastructure/services/api/movies'
 import { requestMovieError, requestMovieSuccess } from '../../actions-creators/movie';
-import {requestTrendingsError, requestTrendingsSuccess } from '../../actions-creators/trending';
 import {handleMovieLoad} from '../movieSaga';
 
 test('should load movie and handle it in case of success', async() => {
