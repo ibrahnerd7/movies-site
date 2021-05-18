@@ -1,8 +1,18 @@
+import { takeEvery } from '@redux-saga/core/effects';
 import { runSaga } from 'redux-saga';
 import * as api from '../../../infrastructure/services/api/shows'
-import { requestShowsError, requestShowsSuccess } from '../../actions-creators/shows';
-import { requestTrendingsError } from '../../actions-creators/trending';
-import { handleShowsLoad } from '../showsSaga';
+import {  requestShowsError, requestShowsSuccess } from '../../actions-creators/shows';
+import { SHOWS } from '../../constants';
+import watchShowsLoad, { handleShowsLoad } from '../showsSaga';
+
+test('should load shows', async() => {
+    const gen =watchShowsLoad();
+
+    const expected=takeEvery(SHOWS.LOAD,handleShowsLoad);
+    const actual=gen.next().value;
+
+    expect(actual).toEqual(expected);
+});
 
 test('should load shows and handle them in case of success', async() => {
     const dispatchedActions=[];
