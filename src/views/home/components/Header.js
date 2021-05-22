@@ -105,7 +105,7 @@ const Header = ({user}) => {
                 </Row>
                 </DropdownToggle>
                  <DropdownMenu style={{borderColor:"white"}}>
-                   <DropdownItem><FiHeart /> Favourites</DropdownItem>
+                   <DropdownItem  href="/favourites"><FiHeart /> Favourites</DropdownItem>
                    <DropdownItem><FiUser /> Profile</DropdownItem>
                    <DropdownItem onClick={()=>authentication.signOut()}><FiLogOut/> Sign out</DropdownItem>
                  </DropdownMenu>

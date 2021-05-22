@@ -14,6 +14,7 @@ import SignIn from './views/signin';
 import SignUp from './views/signup';
 import ForgotPassword from './views/forgotpassword';
 import { UserContext } from './application/providers/UserProvider';
+import { Favourites } from './views/favourites';
 
 const store = configureStore();
 
@@ -48,6 +49,9 @@ function Application() {
             </Route>
             <Route path="/forgotpassword">
               <ForgotPassword />
+            </Route>
+            <Route path="/favourites">
+              <Favourites />
             </Route>
             <Route path="/">
               <Home />
