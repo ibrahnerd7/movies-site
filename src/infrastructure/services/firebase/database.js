@@ -28,3 +28,14 @@ export const getFavourites = async (userId) => {
         return error;
     }
 }
+
+//delete a favourite
+export const deleteFavourite = async (userId,favouriteId) => {
+    try {
+        const ref =database.ref(`users/${userId}/favourites/${favouriteId}`);
+        const res= await ref.set(null);
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
