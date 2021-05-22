@@ -7,6 +7,7 @@ import peopleReducer from './people';
 import movieReducer from './movie';
 import reviewsReducer from './reviews';
 import recommendationsReducer from "./recommendations";
+import favouritesReducer from "./favourites";
 
 const rootReducer= combineReducers({
   trendings:trendingReducer,
@@ -16,7 +17,8 @@ const rootReducer= combineReducers({
   people:peopleReducer,
   movie:movieReducer,
   reviews:reviewsReducer,
-  recommendations:recommendationsReducer
+  recommendations:recommendationsReducer,
+  favourites:favouritesReducer,
 });
 
 export default rootReducer;

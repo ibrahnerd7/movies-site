@@ -1,28 +1,28 @@
-import { REVIEWS } from "../constants";
+import { FAVOURITES } from "../constants";
 
 const initialState = {
-    reviews: [],
+    favourites: [],
     loading: false,
     error: false
 }
 
-const reviewsReducer = (state = initialState, action) => {
+const favouritesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case REVIEWS.LOAD:
+        case FAVOURITES.LOAD:
             return {
-                reviews: [],
+                favourites: [],
                 loading: true,
                 error: false,
             };
-        case REVIEWS.LOAD_SUCCESS:
+        case FAVOURITES.LOAD_SUCCESS:
             return {
-                reviews: action.reviews,
+                favourites: action.favourites,
                 loading: false,
                 error: false
             };
-        case REVIEWS.LOAD_FAIL:
+        case FAVOURITES.LOAD_FAIL:
             return {
-                reviews: [],
+                favourites: [],
                 loading: false,
                 error: true
             };
@@ -31,4 +31,4 @@ const reviewsReducer = (state = initialState, action) => {
     }
 };
 
-export default reviewsReducer;
+export default favouritesReducer;

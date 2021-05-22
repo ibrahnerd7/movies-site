@@ -12,6 +12,6 @@ export const requestFavouritesSuccess = favourites => ({
     favourites,
 });
 
-export const requestMovieError = () => ({
+export const requestFavouritesError = () => ({
     type: FAVOURITES.LOAD_FAIL,
 });
