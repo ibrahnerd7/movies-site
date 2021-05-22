@@ -11,4 +11,20 @@ export const addFavourite = async (userId, favourite) => {
     }
 }
 
-//retrieve favourites by type (eg movies, people or TV Shows)
+//retrieve favourites
+export const getFavourites = async (userId) => {
+    let favourites=[];
+    try {
+        const ref =database.ref(`users/${userId}/favourites`);
+        await ref.once('value',snapshot=>{
+          snapshot.forEach((childSnapshot)=>{
+            const favObject=childSnapshot.val();
+
+            favourites.push(favObject);
+          })
+        });
+       return favourites;
+    } catch (error) {
+        return error;
+    }
+}

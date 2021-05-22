@@ -1,8 +1,10 @@
 import React, { useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Row, Card, CardImg, CardBody, CardTitle, CardSubtitle, Col, Container, CardGroup } from 'reactstrap';
-import { requestShows } from '../../application/actions-creators/shows';
+import { requestFavourites } from '../../application/actions-creators/favourites';
+import { UserContext } from '../../application/providers/UserProvider';
 
 const FavouritesItem=({showItem})=>{
     return(
@@ -19,17 +21,15 @@ const FavouritesItem=({showItem})=>{
 }
 
 const Favourites = () => {
-    const { term } = useParams();
-    const normalizedShowTerm =term.replace('-',"_")
-
-    const { shows } = useSelector(state => state.shows);
     const dispatch = useDispatch()
-
+    const user=useContext(UserContext);
+    const {favourites,loading}=useSelector(state=>state.favourites);
 
     useEffect(() => {
-        dispatch(requestShows(normalizedShowTerm));
-    }, [dispatch, normalizedShowTerm])
-
+        if(user){
+            dispatch(requestFavourites(user.uid));
+        }
+    }, [dispatch, user])
 
     return (
         <Container>
@@ -37,7 +37,7 @@ const Favourites = () => {
             <Row className="flex-row">
             <CardGroup>
                 {
-                    shows.map((show) => (
+                    favourites.map((show) => (
                      <FavouritesItem key={show.id} showItem={show} />
                     ))
                 }

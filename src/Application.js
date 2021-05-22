@@ -29,6 +29,9 @@ function Application() {
             <Route path="/people/:term">
               <People />
             </Route>
+            <Route path="/favourites">
+              <Favourites user={user}/>
+            </Route>
             <Route path="/movies/:term">
               <Movies />
             </Route>
@@ -50,9 +53,7 @@ function Application() {
             <Route path="/forgotpassword">
               <ForgotPassword />
             </Route>
-            <Route path="/favourites">
-              <Favourites />
-            </Route>
+           
             <Route path="/">
               <Home />
             </Route>

@@ -86,6 +86,7 @@ const MovieImage = ({movie}) => {
 
 const MovieDescription = ({movie}) => {
     const user=useContext(UserContext);
+
     return <Col style={{ marginTop: 16 }} className="d-flex flex-column text-white justify-content-between">
         <h4 >{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
         <Row className="ml-1 ">
