@@ -22,9 +22,6 @@ const TagLine = () => {
     <div style={styles.tagline}>
       <h1 data-testid="welcome-text" className="text-white">Welcome .</h1>
       <h5 className="text-white" data-testid="tagline-text">Millions of movies, TV shows and people to discover. Explore now.</h5>
-      <br />
-      <br />
-      <Button data-testid="btn-get-started" color="info" onClick={() => history.push(`/search?query=${searchTerm}`)} >Get started</Button>
     </div>
   )
 }
