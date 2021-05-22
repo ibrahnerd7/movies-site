@@ -39,3 +39,17 @@ export const deleteFavourite = async (userId,favouriteId) => {
         return error;
     }
 }
+
+//delete a favourite
+export const checkIfIsFavourite = async (userId,favouriteId) => {
+    let exists=false;
+    try {
+        const ref =database.ref(`users/${userId}/favourites/${favouriteId}`);
+         await ref.once('value',snapshot=>{
+            exists= snapshot.exists()
+        });
+        return exists;
+    } catch (error) {
+        return error;
+    }
+}
