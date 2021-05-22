@@ -23,7 +23,6 @@ test('should load movie and handle it in case of success', async() => {
     const fakeStore={
         dispatch:action=>dispatchedActions.push(action)
     }
-
     await runSaga(fakeStore,handleMovieLoad,"1234").done;
     expect(api.getMovieById.mock.calls.length).toBe(1);
     expect(dispatchedActions).toContainEqual(requestMovieSuccess(mockedMovie))
