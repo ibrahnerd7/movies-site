@@ -38,7 +38,7 @@ function Application() {
               <Search />
             </Route>
             <Route path="/movie/:id">
-              <Movie />
+              <Movie/>
             </Route>
             <Route path="/signin">
               <SignIn />

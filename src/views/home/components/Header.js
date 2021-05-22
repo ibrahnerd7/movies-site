@@ -13,7 +13,7 @@ import {
     Dropdown,
     Row,
 } from 'reactstrap';
-import {FiChevronDown, FiBookmark, FiLogOut, FiUser, FiHeart} from 'react-icons/fi'
+import {FiChevronDown, FiLogOut, FiUser, FiHeart} from 'react-icons/fi'
 import { loginUser } from '../../../infrastructure/services/firebase/auth';
 import { authentication } from '../../../infrastructure/services/firebase/config';
 

@@ -1,4 +1,4 @@
-import auth from './auth';
-import config from './config';
+import * as config from './config';
+import * as firestore from './database';
 
-export {auth, config};
+export {config, firestore};

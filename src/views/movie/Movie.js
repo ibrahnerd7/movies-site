@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
 import { requestMovie } from '../../application/actions-creators/movie';
@@ -6,7 +6,10 @@ import { requestReviews } from '../../application/actions-creators/reviews';
 import { requestRecommendations } from '../../application/actions-creators/recommendations';
 import { Col, Row, Card, CardImg, Button } from 'reactstrap';
 import {FiHeart} from 'react-icons/fi'
+import {ToastContainer,toast} from 'react-toastify';
 import './styles.css';
+import { UserContext } from '../../application/providers/UserProvider';
+import { firestore } from '../../infrastructure/services/firebase';
 
 const Movie = () => {
     const [id,setId]=useState(useParams().id)
@@ -82,6 +85,7 @@ const MovieImage = ({movie}) => {
 }
 
 const MovieDescription = ({movie}) => {
+    const user=useContext(UserContext);
     return <Col style={{ marginTop: 16 }} className="d-flex flex-column text-white justify-content-between">
         <h4 >{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
         <Row className="ml-1 ">
@@ -91,7 +95,11 @@ const MovieDescription = ({movie}) => {
         <h5>Overview</h5>
         <p>{movie.overview}</p>
         </div>
-        <Button color="success" style={{width:42,height:42, borderRadius:21}}><FiHeart /></Button>
+       {user && <Button color="success" onClick={()=>{
+           firestore.addFavourite(user.uid,movie)
+           toast.success("Movie Added to favourites",{position:toast.POSITION.BOTTOM_RIGHT,hideProgressBar:true})
+           }} style={{width:42,height:42, borderRadius:21}}><FiHeart /></Button>}
+       <ToastContainer />
     </Col>
 }
 
