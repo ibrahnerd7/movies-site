@@ -16,6 +16,7 @@ import {
 import {FiChevronDown, FiLogOut, FiUser, FiHeart, FiMenu} from 'react-icons/fi'
 import { loginUser } from '../../../infrastructure/services/firebase/auth';
 import { authentication } from '../../../infrastructure/services/firebase/config';
+import {useHistory} from 'react-router-dom';
 
 const menuStyles={textDecoration:"none", color:"#25a2b8", backgroundColor:"#24282d",borderColor:"#24282d"}
 
@@ -86,9 +87,10 @@ const Header = ({user}) => {
     const toggle = () => setIsOpen(!isOpen);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const userToggle = () => setDropdownOpen(prevState => !prevState);
+    const history=useHistory();
 
     return ( 
-            <Navbar style={{backgroundColor:"#24282d"}} expand="md"  >
+            <Navbar style={{backgroundColor:"#24282d"}} expand="md"  fixed="top">
                 <NavbarBrand href="/" style={menuStyles}>Movies Site</NavbarBrand>
                 <NavbarToggler> <FiMenu color="#25a2b8" size={24} onClick={toggle} /></NavbarToggler>
                 <Collapse  isOpen={isOpen} navbar>
@@ -112,6 +114,7 @@ const Header = ({user}) => {
                    <DropdownItem onClick={()=>{
                        const shouldSignOut=window.confirm("Do you really want to sign out");
                        shouldSignOut&& authentication.signOut()
+                       history.replace('/')
                    }}><FiLogOut/> Sign out</DropdownItem>
                  </DropdownMenu>
                </Dropdown>
