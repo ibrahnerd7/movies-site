@@ -7,7 +7,43 @@
   }
   
   /* Hide scrollbar for IE, Edge and Firefox */
-  .trending {
+.trending {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+  .tagline {
+    background-image: url("https://images.pexels.com/photos/3811867/pexels-photo-3811867.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: "auto";
+    background-repeat: "no-repeat";
+    padding-top: 196px;
+    padding-bottom: 196px;
+    padding-left:24px;
+    padding-right: 24px;
+  }
+
+
+
+  @media only screen and (max-width: 540px) {
+    .tagline {
+      background-image: url("https://images.pexels.com/photos/3811867/pexels-photo-3811867.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+      background-size: 400px;
+      background-repeat: "no-repeat";
+      padding-top: 94px;
+      padding-bottom: 39px;
+      padding-left:12px;
+      padding-right: 12px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 768px) {
+    .tagline {
+      background-image: url("https://images.pexels.com/photos/3811867/pexels-photo-3811867.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+      background-size: 768px;
+      background-repeat: "no-repeat";
+      padding-top: 94px;
+      padding-bottom: 39px;
+      padding-left:12px;
+      padding-right: 12px;
+    }
+  }
+  

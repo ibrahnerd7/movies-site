@@ -17,10 +17,12 @@ import {FiChevronDown, FiLogOut, FiUser, FiHeart, FiMenu} from 'react-icons/fi'
 import { loginUser } from '../../../infrastructure/services/firebase/auth';
 import { authentication } from '../../../infrastructure/services/firebase/config';
 
+const menuStyles={textDecoration:"none", color:"#25a2b8", backgroundColor:"#24282d",borderColor:"#24282d"}
+
 const MoviesHeaderItems=()=>{
     return(
         <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav>
+        <DropdownToggle nav style={menuStyles}>
             Movies <FiChevronDown />
 </DropdownToggle>
         <DropdownMenu right>
@@ -44,8 +46,8 @@ const MoviesHeaderItems=()=>{
 
 const ShowsHeaderItems=()=>{
     return(
-        <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav >TV Shows<FiChevronDown /> </DropdownToggle>
+        <UncontrolledDropdown nav inNavbar >
+        <DropdownToggle nav style={menuStyles}>TV Shows<FiChevronDown /> </DropdownToggle>
         <DropdownMenu right>
             <DropdownItem href="/shows/popular">
                 Popular
@@ -67,7 +69,7 @@ const ShowsHeaderItems=()=>{
 const PeopleHeaderItems=()=>{
     return(
         <UncontrolledDropdown nav inNavbar>
-        <DropdownToggle nav >
+        <DropdownToggle nav  style={menuStyles}>
             People <FiChevronDown />
 </DropdownToggle>
         <DropdownMenu right>
@@ -87,8 +89,8 @@ const Header = ({user}) => {
 
     return ( 
             <Navbar style={{backgroundColor:"#24282d"}} expand="md"  >
-                <NavbarBrand href="/">Movies Site</NavbarBrand>
-                <FiMenu color="#25a2b8" size={24} onClick={toggle} />
+                <NavbarBrand href="/" style={menuStyles}>Movies Site</NavbarBrand>
+                <NavbarToggler> <FiMenu color="#25a2b8" size={24} onClick={toggle} /></NavbarToggler>
                 <Collapse  isOpen={isOpen} navbar>
                     <Nav className="mr-auto" >
                      <MoviesHeaderItems />
