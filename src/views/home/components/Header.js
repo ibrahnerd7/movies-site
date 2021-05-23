@@ -100,7 +100,7 @@ const Header = ({user}) => {
                     <Nav className="ml-auto" navbar>
                  {user? 
                  <Dropdown isOpen={dropdownOpen} toggle={userToggle} >
-                     <DropdownToggle color="info">
+                     <DropdownToggle  nav style={menuStyles}>
                          <Row>
                 <img  src={user.photoURL} alt="User Profile" className="rounded-circle" style={{width:30,height:30,borderRadius:15,marginRight:8,marginLeft:8}} />
                 <p className="mr-4">Hello, {user.displayName}</p>
@@ -109,7 +109,10 @@ const Header = ({user}) => {
                  <DropdownMenu style={{borderColor:"white"}}>
                    <DropdownItem  href="/favourites"><FiHeart /> Favourites</DropdownItem>
                    <DropdownItem><FiUser /> Profile</DropdownItem>
-                   <DropdownItem onClick={()=>authentication.signOut()}><FiLogOut/> Sign out</DropdownItem>
+                   <DropdownItem onClick={()=>{
+                       const shouldSignOut=window.confirm("Do you really want to sign out");
+                       shouldSignOut&& authentication.signOut()
+                   }}><FiLogOut/> Sign out</DropdownItem>
                  </DropdownMenu>
                </Dropdown>
                   : <Button color="info" onClick={() =>loginUser()} > Sign In </Button>}
