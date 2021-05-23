@@ -13,7 +13,7 @@ import {
     Dropdown,
     Row,
 } from 'reactstrap';
-import {FiChevronDown, FiLogOut, FiUser, FiHeart} from 'react-icons/fi'
+import {FiChevronDown, FiLogOut, FiUser, FiHeart, FiMenu} from 'react-icons/fi'
 import { loginUser } from '../../../infrastructure/services/firebase/auth';
 import { authentication } from '../../../infrastructure/services/firebase/config';
 
@@ -88,8 +88,8 @@ const Header = ({user}) => {
     return ( 
             <Navbar style={{backgroundColor:"#24282d"}} expand="md"  >
                 <NavbarBrand href="/">Movies Site</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
+                <FiMenu color="#25a2b8" size={24} onClick={toggle} />
+                <Collapse  isOpen={isOpen} navbar>
                     <Nav className="mr-auto" >
                      <MoviesHeaderItems />
                        <ShowsHeaderItems />
