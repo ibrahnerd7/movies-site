@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router';
 import { requestMovie } from '../../application/actions-creators/movie';
 import { requestReviews } from '../../application/actions-creators/reviews';
 import { requestRecommendations } from '../../application/actions-creators/recommendations';
-import { Col, Row, Card, CardImg, Button } from 'reactstrap';
+import { Col, Row, Card, CardImg, Button, Container } from 'reactstrap';
 import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
 import { ToastContainer, toast } from 'react-toastify';
 import './styles.css';
@@ -31,11 +31,12 @@ const Movie = () => {
 
 
     return (
-        <main>
-            <Row className="flex-1" style={{ ...getStyles(movie) }}>
+        <Container fluid style={{ backgroundColor: "#24282d", paddingTop: 16, paddingBottom: 16,color:"#ffffff" }}>
+            <Container>
+            <div  style={{ ...getStyles(movie) }} className="d-flex flex-md-row">
                 <MovieImage movie={movie} />
                 <MovieDescription movie={movie} />
-            </Row>
+            </div>
             <Col>
                 <h4 className="text-black" style={{ marginTop: 32 }}>Reviews</h4>
                 {reviews.map((review) => <ReviewsCard review={review} />)}
@@ -48,7 +49,8 @@ const Movie = () => {
                     }
                 </Row>
             </Col>
-        </main>
+            </Container>
+        </Container>
     )
 }
 
@@ -57,7 +59,7 @@ const RecommendationsCard = ({ recommendation, history, setId }) => {
         setId(recommendation.id)
         history.push(`/movie/${recommendation.id}`)
     }}>
-        <Card inverse style={{ border: "none", borderRadius: 16 }}>
+        <Card inverse style={{ border: "none", borderRadius: 16,  }}>
             <CardImg style={{ borderRadius: 16 }} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${recommendation.poster_path}`} alt="Card image cap" />
         </Card>
         <h6 className="text-black">{recommendation.original_title || recommendation.title}</h6>
@@ -66,8 +68,7 @@ const RecommendationsCard = ({ recommendation, history, setId }) => {
 }
 
 const ReviewsCard = ({ review }) => {
-    return <Row key={review.id} >
-        <Card className="mt-2 p-2" style={{ backgroundColor: "white" }}>
+    return <Card key={review.id} className="mt-2 p-2" style={{ backgroundColor: "#24282d" }}>
             <Row>
                 <img src={`${review.author_details.avatar_path}`.substring(1)} alt="Card cap" style={{ width: 76, height: 76, borderRadius: 48, marginLeft: 16, marginTop: 16 }} />
                 <Col>
@@ -77,7 +78,6 @@ const ReviewsCard = ({ review }) => {
                 </Col>
             </Row>
         </Card>
-    </Row>
 }
 
 const MovieImage = ({ movie }) => {
@@ -138,12 +138,13 @@ const MovieDescription = ({ movie }) => {
 const getStyles = (movie) => {
     return {
         backgroundImage: `url(${`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.backdrop_path}`})`,
+        backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
         paddingTop: 116,
         paddingBottom: 76,
         paddingLeft: 24,
-        width: "100%",
-        backgroundSize: "cover",
+        // height: '100vh',
     }
 }
 
