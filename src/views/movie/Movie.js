@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
+import {useColor} from 'color-thief-react';
 import { requestMovie } from '../../application/actions-creators/movie';
 import { requestReviews } from '../../application/actions-creators/reviews';
 import { requestRecommendations } from '../../application/actions-creators/recommendations';
 import { Col, Row, Card, CardImg, Button, Container } from 'reactstrap';
-import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io'
+import { IoMdHeart, IoMdHeartEmpty, IoMdCreate } from 'react-icons/io'
 import { ToastContainer, toast } from 'react-toastify';
 import './styles.css';
 import { UserContext } from '../../application/providers/UserProvider';
@@ -17,11 +18,15 @@ const Movie = () => {
     const { movie } = useSelector(state => state.movie);
     const { reviews } = useSelector(state => state.reviews);
     const { recommendations } = useSelector(state => state.recommendations);
+    const imageRef=React.forwardRef();
     const history = useHistory()
     const dispatch = useDispatch()
     const user = useContext(UserContext);
 
+    
+    const { data, loading, error } = useColor(`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`, 'hex', { crossOrigin:"anonymous", quality:25})
 
+console.log(data)
     useEffect(() => {
         dispatch(requestMovie(id));
         dispatch(requestReviews(id));
@@ -29,20 +34,36 @@ const Movie = () => {
 
     }, [dispatch, id, user])
 
-
+    const styles = { favButton: { width: 42, height: 42, borderRadius: 21 } }
+    
     return (
         <Container fluid style={{ backgroundColor: "#24282d", paddingTop: 16, paddingBottom: 16,color:"#ffffff" }}>
-            {/* <Container> */}
-<h4  className="text-white" style={{ ...getHeadingStyles() }}>{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
-
+            <Container fluid style={{backgroundColor:`${data}`}}>
+                <Container>
+            <h4  className="text-white" style={{ ...getHeadingStyles() }}>{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
             <div  style={{ ...getStyles(movie) }} className="row ">
-       
-
-                <MovieImage movie={movie}  className="col-sm-12"/>
+            <Col md="3" xs="12" >
+        <Card inverse style={{ border: "none", borderRadius: 8 }}>
+            <CardImg 
+            crossOrigin={"anonymous"} 
+            ref={imageRef} style={{ borderRadius: 6 }}
+             src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`} 
+            alt="Card image cap" 
+                />
+        </Card>
+    </Col>
                 <MovieDescription movie={movie} />
             </div>
+            </Container> 
+            </Container>
+            <Container>
             <Col>
-                <h4 className="text-black" style={{ marginTop: 32 }}>Reviews</h4>
+                <Row className='d-flex justify-content-between'>
+                    <h4 className="text-black" style={{ marginTop: 8 }}>Reviews</h4>
+                    <Button style={styles.favButton} color="success" onClick={() => toast.info(`Add to reviews`, { position: toast.POSITION.BOTTOM_RIGHT, hideProgressBar: true })}>
+                    <IoMdCreate />
+                </Button> 
+                    </Row>
                 {reviews.map((review) => <ReviewsCard review={review} />)}
             </Col>
             <Col>
@@ -53,7 +74,7 @@ const Movie = () => {
                     }
                 </Row>
             </Col>
-            {/* </Container> */}
+            </Container>
         </Container>
     )
 }
@@ -84,14 +105,6 @@ const ReviewsCard = ({ review }) => {
         </Card>
 }
 
-const MovieImage = ({ movie }) => {
-    return (
-    <Col md="2" xs="12" >
-        <Card inverse style={{ border: "none", borderRadius: 16 }}>
-            <CardImg style={{ borderRadius: 16 }} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`} alt="Card image cap" />
-        </Card>
-    </Col>)
-}
 
 const MovieDescription = ({ movie }) => {
     const user = useContext(UserContext);
