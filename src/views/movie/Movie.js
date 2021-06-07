@@ -32,9 +32,13 @@ const Movie = () => {
 
     return (
         <Container fluid style={{ backgroundColor: "#24282d", paddingTop: 16, paddingBottom: 16,color:"#ffffff" }}>
-            <Container>
-            <div  style={{ ...getStyles(movie) }} className="d-flex flex-md-row">
-                <MovieImage movie={movie} />
+            {/* <Container> */}
+<h4  className="text-white" style={{ ...getHeadingStyles() }}>{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
+
+            <div  style={{ ...getStyles(movie) }} className="row ">
+       
+
+                <MovieImage movie={movie}  className="col-sm-12"/>
                 <MovieDescription movie={movie} />
             </div>
             <Col>
@@ -49,7 +53,7 @@ const Movie = () => {
                     }
                 </Row>
             </Col>
-            </Container>
+            {/* </Container> */}
         </Container>
     )
 }
@@ -81,11 +85,12 @@ const ReviewsCard = ({ review }) => {
 }
 
 const MovieImage = ({ movie }) => {
-    return <Col md="2" xs="6" >
+    return (
+    <Col md="2" xs="12" >
         <Card inverse style={{ border: "none", borderRadius: 16 }}>
             <CardImg style={{ borderRadius: 16 }} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.poster_path}`} alt="Card image cap" />
         </Card>
-    </Col>
+    </Col>)
 }
 
 const MovieDescription = ({ movie }) => {
@@ -104,7 +109,6 @@ const MovieDescription = ({ movie }) => {
     const styles = { favButton: { width: 42, height: 42, borderRadius: 21 } }
 
     return <Col style={{ marginTop: 16 }} className="d-flex flex-column text-white justify-content-between">
-        <h4 >{`${movie.original_title || movie.title} (${new Date(movie.release_date).getFullYear()})`}</h4>
         <Row className="ml-1 ">
             {movie.genres && movie.genres.map((genre) => <p key={genre.id}>{genre.name} ,</p>)}
         </Row>
@@ -135,16 +139,21 @@ const MovieDescription = ({ movie }) => {
 }
 
 
-const getStyles = (movie) => {
+const getStyles = () => {
     return {
-        backgroundImage: `url(${`https://www.themoviedb.org/t/p/w440_and_h660_face${movie.backdrop_path}`})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        paddingTop: 116,
+        paddingTop: 48,
         paddingBottom: 76,
-        paddingLeft: 24,
-        // height: '100vh',
+        // paddingLeft: 24,
+    }
+}
+const getHeadingStyles = () => {
+    return {
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        paddingTop: 116,
+        // paddingLeft: 24,
     }
 }
 
