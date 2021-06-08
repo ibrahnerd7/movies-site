@@ -53,3 +53,33 @@ export const checkIfIsFavourite = async (userId,favouriteId) => {
         return error;
     }
 }
+
+//Store a review
+export const addReview = async (review) => {
+    try {
+        const ref =database.ref(`reviews/${review.movieId}/${review.userId}`);
+        const res= await ref.set(review);
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
+
+//retrieve reviews
+export const getReviews = async (movieId) => {
+    let reviews=[];
+    try {
+        const ref =database.ref(`reviews/${movieId}`);
+        await ref.once('value',snapshot=>{
+          snapshot.forEach((childSnapshot)=>{
+            const reviewObject=childSnapshot.val();
+
+            reviews.push(reviewObject);
+          })
+        });
+        console.log(reviews)
+       return reviews;
+    } catch (error) {
+        return error;
+    }
+}
