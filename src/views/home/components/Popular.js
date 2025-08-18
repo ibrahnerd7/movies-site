@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { Row ,Card, CardImg,Col} from 'reactstrap';
 import { requestPopular } from '../../../application/actions-creators/popular';
 import './style.css'
 
 
-const PopularCard = ({item,history}) => {
+const PopularCard = ({item,navigate}) => {
 
-    return  <Col md="2" xs="6" onClick={()=>history.push(`/movie/${item.id}`)} style={{cursor:"pointer"}}>
+    return  <Col md="2" xs="6" onClick={()=>navigate(`/movie/${item.id}`)} style={{cursor:"pointer"}}>
         <Card inverse style={{border:"none",borderRadius:16}} >
             <CardImg style={{borderRadius:16}} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt="Card image cap" />
         </Card>
@@ -21,7 +21,7 @@ const Popular = () => {
   const [activePopularType, setActivePopularType]=useState("movie");
   const {popular,loading}=useSelector(state=>state.populars);
   const dispatch=useDispatch()
-  const history=useHistory()
+  const navigate=useNavigate()
 
 
   useEffect(()=>{
@@ -39,7 +39,7 @@ const Popular = () => {
             </Row>
             <Row className="flex-nowrap flex-row trending flex-1" >
                     {
-                    popular.map((popularItem) => <PopularCard item={popularItem} key={popularItem.id} history={history}/>)
+                    popular.map((popularItem) => <PopularCard item={popularItem} key={popularItem.id} navigate={navigate}/>)
                 }
                 </Row>
         </div>

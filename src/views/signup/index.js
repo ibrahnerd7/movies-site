@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { Col, Container, Input, Row, Button } from 'reactstrap';
 import { registerUser } from '../../infrastructure/services/firebase/auth'
 
@@ -8,7 +8,7 @@ const SignUp = () => {
     const [password, setPassword] = useState();
     const [error, setError] = useState();
 
-    let history = useHistory();
+    let navigate = useNavigate();
 
     const signUpUser = async (e) => {
         e.preventDefault()
@@ -22,7 +22,7 @@ const SignUp = () => {
              * Store user in firebase  for favourites
              */
 
-            history.push("/profile")
+            navigate("/profile")
         }
 
     }

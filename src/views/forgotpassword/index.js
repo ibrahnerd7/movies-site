@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
 import { Col, Container, Input, Row, Button } from 'reactstrap';
 import { sendResetEmail } from '../../infrastructure/services/firebase/auth'
 
@@ -7,7 +6,6 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState();
     const [error, setError] = useState();
 
-    const history = useHistory()
 
     const resetPassword = async (e) => {
         e.preventDefault()

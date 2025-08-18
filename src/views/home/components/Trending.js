@@ -3,10 +3,10 @@ import { Card, CardImg, Col, Row, Button } from 'reactstrap';
 import './style.css'
 import {  useDispatch, useSelector } from 'react-redux';
 import { requestTrendings } from '../../../application/actions-creators/trending';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
-const TrendingCard = ({ item ,history}) => {
-    return <Col md="2" xs="6" onClick={()=>history.push(`/movie/${item.id}`)} style={{cursor:"pointer"}}>
+const TrendingCard = ({ item ,navigate}) => {
+    return <Col md="2" xs="6" onClick={()=>navigate(`/movie/${item.id}`)} style={{cursor:"pointer"}}>
         <Card inverse style={{border:"none",borderRadius:16}}>
             <CardImg style={{borderRadius:16}} src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt="Card image cap" />
         </Card>
@@ -19,8 +19,8 @@ const Trending =()=> {
     const [activeTimeWindow, setActiveTimeWindow]=useState("day");
     const {trendings,loading}=useSelector(state=>state.trendings);
 
-    const dispatch=useDispatch()
-    const history=useHistory()
+    const dispatch=useDispatch();
+    const navigate=useNavigate();
   
   
     useEffect(()=>{
@@ -40,7 +40,7 @@ const Trending =()=> {
                 </Row>
                 <Row className="flex-nowrap flex-row trending flex-1" >
                     {
-                    trendings.map((trendingItem) => <TrendingCard item={trendingItem} key={trendingItem.id} history={history}/>)
+                    trendings.map((trendingItem) => <TrendingCard item={trendingItem} key={trendingItem.id} navigate={navigate}/>)
                 }
                 </Row>
             </div>

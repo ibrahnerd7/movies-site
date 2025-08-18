@@ -1,14 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-ReactDOM.render(
+root.render(
   <React.Fragment>
-      <App />
-  </React.Fragment>,
-  document.getElementById('root')
+    <App />
+  </React.Fragment>
 );
 
 // reportWebVitals();

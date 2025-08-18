@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
 import { Col, Container, Input, Row, Button, Alert } from 'reactstrap';
 import { loginUser } from '../../infrastructure/services/firebase/auth'
+import {useNavigate} from 'react-router-dom'
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    const history = useHistory()
+    const navigate = useNavigate();
 
     const signInUser = async (e) => {
         setIsSubmitting(true);
@@ -20,10 +19,8 @@ const SignIn = () => {
             setError(user.message)
         } else {
             setShowSuccessMessage(true);
-            history.push("/")
-          
+            navigate("/")
         }
-        console.log(user)
        setIsSubmitting(false);
     }
 
